@@ -5,33 +5,43 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>登录 - 团队任务管理</title>
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700&family=Noto+Sans+SC:wght@400;500;600;700&display=swap');
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            font-family: "Noto Sans SC", "PingFang SC", -apple-system, sans-serif;
+            background: #8b7560;
+            background-image:
+                repeating-linear-gradient(45deg, transparent, transparent 20px, rgba(0,0,0,0.03) 20px, rgba(0,0,0,0.03) 21px),
+                repeating-linear-gradient(-45deg, transparent, transparent 20px, rgba(0,0,0,0.03) 20px, rgba(0,0,0,0.03) 21px),
+                linear-gradient(180deg, #7a6550 0%, #5c4535 100%);
             min-height: 100vh;
             display: flex;
             align-items: center;
             justify-content: center;
         }
         .login-card {
-            background: white;
-            border-radius: 16px;
+            background: linear-gradient(180deg, #faf6ef 0%, #f0ebe2 100%);
+            border-radius: 10px;
             padding: 48px 40px;
             width: 400px;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+            box-shadow: 0 20px 60px rgba(0,0,0,0.4), 0 0 0 1px rgba(0,0,0,0.1), inset 0 1px 0 rgba(255,255,255,0.7);
+            border: 3px solid #8b6f5a;
         }
         .login-card h1 {
-            font-size: 24px;
-            color: #1a1a2e;
+            font-size: 26px;
+            color: #5c3d2e;
             margin-bottom: 8px;
             text-align: center;
+            font-family: "Noto Serif SC", serif;
+            letter-spacing: 3px;
+            text-shadow: 0 1px 0 rgba(255,255,255,0.5);
         }
         .login-card p {
-            color: #666;
+            color: #8b7560;
             text-align: center;
             margin-bottom: 32px;
             font-size: 14px;
+            letter-spacing: 1px;
         }
         .form-group {
             margin-bottom: 20px;
@@ -40,36 +50,45 @@
             display: block;
             font-size: 13px;
             font-weight: 600;
-            color: #444;
+            color: #5c4535;
             margin-bottom: 6px;
         }
         .form-group input {
             width: 100%;
             padding: 12px 16px;
-            border: 2px solid #e8e8e8;
-            border-radius: 10px;
+            border: 1px solid #b0a898;
+            border-radius: 5px;
             font-size: 15px;
-            transition: border-color 0.2s;
+            transition: all 0.2s;
             outline: none;
+            background: linear-gradient(180deg, #ede6da 0%, #faf6ef 4px, #faf6ef 100%);
+            box-shadow: inset 0 2px 3px rgba(0,0,0,0.1), 0 1px 0 rgba(255,255,255,0.5);
+            font-family: inherit;
         }
         .form-group input:focus {
-            border-color: #667eea;
+            border-color: #1d72c4;
+            box-shadow: inset 0 2px 3px rgba(0,0,0,0.1), 0 0 0 2px rgba(29,114,196,0.25);
         }
         .btn {
             width: 100%;
             padding: 14px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(180deg, #3a9be0 0%, #1a6cb0 50%, #155a92 100%);
             color: white;
-            border: none;
-            border-radius: 10px;
+            border: 1px solid #0f4a7a;
+            border-radius: 6px;
             font-size: 16px;
             font-weight: 600;
             cursor: pointer;
-            transition: opacity 0.2s;
+            transition: all 0.2s;
+            text-shadow: 0 -1px 1px rgba(0,0,0,0.3);
+            box-shadow: 0 3px 6px rgba(0,0,0,0.2), inset 0 1px 0 rgba(255,255,255,0.25);
+            letter-spacing: 4px;
+            font-family: inherit;
         }
-        .btn:hover { opacity: 0.9; }
+        .btn:hover { background: linear-gradient(180deg, #4aabe0 0%, #2a7cc0 50%, #1a6aa2 100%); }
+        .btn:active { box-shadow: inset 0 2px 5px rgba(0,0,0,0.3); }
         .error {
-            color: #DC2626;
+            color: #c0392b;
             font-size: 13px;
             text-align: center;
             margin-top: 12px;
@@ -100,7 +119,8 @@
         const errEl = document.getElementById('error');
         errEl.style.display = 'none';
         try {
-            const res = await fetch('/api/login', {
+            const base = window.location.pathname.replace(/\/login\/?$/, '');
+            const res = await fetch(base + '/api/login', {
                 method: 'POST',
                 headers: {'Content-Type': 'application/json'},
                 body: JSON.stringify({
@@ -110,7 +130,7 @@
             });
             const data = await res.json();
             if (data.ok) {
-                window.location.href = '/dashboard';
+                window.location.href = base + '/dashboard';
             } else {
                 errEl.textContent = data.error;
                 errEl.style.display = 'block';

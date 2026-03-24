@@ -6,36 +6,45 @@
     <title>团队任务管理</title>
     <style>
         :root {
-            --bg: #f0f2f5;
-            --card: #ffffff;
-            --primary: #4F46E5;
-            --primary-light: #EEF2FF;
-            --text: #1a1a2e;
-            --text-secondary: #6b7280;
-            --border: #e5e7eb;
-            --success: #059669;
-            --warning: #D97706;
-            --danger: #DC2626;
-            --urgent: #DC2626;
-            --high: #EA580C;
-            --medium: #D97706;
-            --low: #6b7280;
-            --radius: 12px;
+            --bg: #c4beb4;
+            --card: #f5f0e8;
+            --primary: #1d72c4;
+            --primary-light: #d6e8f7;
+            --text: #2c2420;
+            --text-secondary: #7a7065;
+            --border: #b8b0a4;
+            --success: #3a8a3e;
+            --warning: #c68a17;
+            --danger: #c0392b;
+            --urgent: #c0392b;
+            --high: #d35400;
+            --medium: #c68a17;
+            --low: #7a7065;
+            --radius: 8px;
+            --leather: #5c3d2e;
+            --leather-light: #8b6f5a;
+            --paper: #faf6ef;
+            --linen: #e8e0d4;
         }
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700&family=Noto+Sans+SC:wght@400;500;600;700&display=swap');
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "PingFang SC", "Microsoft YaHei", sans-serif;
-            background: var(--bg);
+            font-family: "Noto Sans SC", "PingFang SC", -apple-system, sans-serif;
+            background: var(--linen);
+            background-image:
+                repeating-linear-gradient(0deg, transparent, transparent 24px, rgba(0,0,0,0.03) 24px, rgba(0,0,0,0.03) 25px),
+                repeating-linear-gradient(90deg, transparent, transparent 24px, rgba(0,0,0,0.02) 24px, rgba(0,0,0,0.02) 25px);
             color: var(--text);
             line-height: 1.5;
         }
 
         /* ─── Header ───── */
         .header {
-            background: white;
-            border-bottom: 1px solid var(--border);
+            background: linear-gradient(180deg, #7a5c48 0%, #5c3d2e 40%, #4a2f22 100%);
+            border-bottom: 3px solid #3a2015;
             padding: 0 24px;
-            height: 56px;
+            height: 60px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.35), inset 0 1px 0 rgba(255,255,255,0.15);
             display: flex;
             align-items: center;
             justify-content: space-between;
@@ -49,27 +58,41 @@
             gap: 24px;
         }
         .header h1 {
-            font-size: 18px;
+            font-size: 19px;
             font-weight: 700;
-            color: var(--primary);
+            color: #f0e6d8;
+            text-shadow: 0 -1px 1px rgba(0,0,0,0.5), 0 1px 0 rgba(255,255,255,0.1);
+            font-family: "Noto Serif SC", serif;
+            letter-spacing: 2px;
         }
         .header-nav {
             display: flex;
             gap: 4px;
         }
         .header-nav button {
-            padding: 6px 16px;
-            border: none;
-            background: none;
-            border-radius: 8px;
-            font-size: 14px;
-            color: var(--text-secondary);
+            padding: 7px 18px;
+            border: 1px solid rgba(0,0,0,0.3);
+            background: linear-gradient(180deg, rgba(255,255,255,0.18) 0%, rgba(255,255,255,0.05) 50%, rgba(0,0,0,0.1) 100%);
+            border-radius: 5px;
+            font-size: 13px;
+            color: #ddd0c0;
             cursor: pointer;
-            font-weight: 500;
+            font-weight: 600;
             transition: all 0.15s;
+            text-shadow: 0 -1px 1px rgba(0,0,0,0.4);
+            margin: 0 1px;
         }
-        .header-nav button:hover { background: var(--primary-light); color: var(--primary); }
-        .header-nav button.active { background: var(--primary); color: white; }
+        .header-nav button:hover {
+            background: linear-gradient(180deg, rgba(255,255,255,0.25) 0%, rgba(255,255,255,0.1) 50%, rgba(0,0,0,0.05) 100%);
+            color: #fff;
+        }
+        .header-nav button.active {
+            background: linear-gradient(180deg, #2a8ad4 0%, #1a6cb0 50%, #155a92 100%);
+            color: white;
+            border-color: #0f4a7a;
+            box-shadow: inset 0 1px 0 rgba(255,255,255,0.25), 0 1px 3px rgba(0,0,0,0.3);
+            text-shadow: 0 -1px 1px rgba(0,0,0,0.3);
+        }
         .header-right {
             display: flex;
             align-items: center;
@@ -82,6 +105,8 @@
             color: white;
             font-size: 14px;
             font-weight: 700;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.25), inset 0 1px 0 rgba(255,255,255,0.3);
+            border: 2px solid rgba(255,255,255,0.2);
         }
         .user-menu {
             position: relative;
@@ -90,13 +115,15 @@
             display: flex; align-items: center; gap: 8px;
             border: none; background: none; cursor: pointer;
             padding: 4px 8px; border-radius: 8px;
+            color: #ddd0c0;
         }
-        .user-menu-btn:hover { background: #f3f4f6; }
+        .user-menu-btn:hover { background: rgba(255,255,255,0.1); }
+        .user-menu-btn span { color: #ddd0c0; }
         .user-menu-dropdown {
-            position: absolute; right: 0; top: 42px;
-            background: white; border-radius: 10px;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.12);
-            border: 1px solid var(--border);
+            position: absolute; right: 0; top: 46px;
+            background: var(--paper); border-radius: 8px;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.3), 0 0 0 1px rgba(0,0,0,0.1);
+            border: 1px solid #c8bfb0;
             min-width: 180px;
             display: none;
             overflow: hidden;
@@ -121,10 +148,11 @@
             margin-bottom: 24px;
         }
         .stat-card {
-            background: white;
+            background: linear-gradient(180deg, #fefcf8 0%, #f5f0e8 100%);
             border-radius: var(--radius);
             padding: 20px;
-            border: 1px solid var(--border);
+            border: 1px solid #c8bfb0;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.1), inset 0 1px 0 rgba(255,255,255,0.8);
         }
         .stat-card .label {
             font-size: 13px;
@@ -149,15 +177,16 @@
             margin-bottom: 24px;
         }
         .team-card {
-            background: white;
+            background: linear-gradient(180deg, #fefcf8 0%, #f0ebe2 100%);
             border-radius: var(--radius);
             padding: 20px;
-            border: 1px solid var(--border);
+            border: 1px solid #c8bfb0;
             cursor: pointer;
             transition: box-shadow 0.2s, transform 0.2s;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.1), inset 0 1px 0 rgba(255,255,255,0.8);
         }
         .team-card:hover {
-            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.15), inset 0 1px 0 rgba(255,255,255,0.8);
             transform: translateY(-2px);
         }
         .team-card-header {
@@ -171,16 +200,20 @@
         .team-card-header .role { font-size: 12px; color: var(--text-secondary); }
         .progress-bar-bg {
             width: 100%;
-            height: 8px;
-            background: #f3f4f6;
-            border-radius: 4px;
+            height: 10px;
+            background: linear-gradient(180deg, #d0c8bc 0%, #e8e0d4 50%, #d8d0c4 100%);
+            border-radius: 5px;
             overflow: hidden;
             margin-bottom: 8px;
+            box-shadow: inset 0 2px 3px rgba(0,0,0,0.15), 0 1px 0 rgba(255,255,255,0.5);
+            border: 1px solid #b8b0a4;
         }
         .progress-bar-fill {
             height: 100%;
             border-radius: 4px;
             transition: width 0.5s ease;
+            background-image: linear-gradient(180deg, rgba(255,255,255,0.35) 0%, rgba(255,255,255,0.1) 50%, rgba(0,0,0,0.05) 100%);
+            box-shadow: inset 0 1px 0 rgba(255,255,255,0.3);
         }
         .team-card-stats {
             display: flex;
@@ -196,34 +229,39 @@
 
         /* ─── Task List ───── */
         .panel {
-            background: white;
+            background: linear-gradient(180deg, #fefcf8 0%, #f5f0e8 100%);
             border-radius: var(--radius);
-            border: 1px solid var(--border);
+            border: 1px solid #c8bfb0;
             margin-bottom: 24px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1), inset 0 1px 0 rgba(255,255,255,0.8);
         }
         .panel-header {
             display: flex;
             align-items: center;
             justify-content: space-between;
-            padding: 16px 20px;
-            border-bottom: 1px solid var(--border);
+            padding: 14px 20px;
+            border-bottom: 1px solid #d4ccc0;
+            background: linear-gradient(180deg, #f0ebe2 0%, #e8e0d4 100%);
+            border-radius: var(--radius) var(--radius) 0 0;
         }
-        .panel-header h2 { font-size: 16px; font-weight: 600; }
+        .panel-header h2 { font-size: 16px; font-weight: 700; font-family: "Noto Serif SC", serif; color: var(--leather); }
         .date-nav {
             display: flex;
             align-items: center;
             gap: 8px;
         }
         .date-nav button {
-            width: 32px; height: 32px;
-            border: 1px solid var(--border);
-            background: white;
-            border-radius: 8px;
+            width: 30px; height: 30px;
+            border: 1px solid #b0a898;
+            background: linear-gradient(180deg, #fefcf8 0%, #ede6da 100%);
+            border-radius: 5px;
             cursor: pointer;
-            font-size: 16px;
+            font-size: 14px;
             display: flex; align-items: center; justify-content: center;
+            box-shadow: 0 1px 2px rgba(0,0,0,0.1), inset 0 1px 0 rgba(255,255,255,0.7);
         }
-        .date-nav button:hover { background: #f3f4f6; }
+        .date-nav button:hover { background: linear-gradient(180deg, #fff 0%, #f0ebe2 100%); }
+        .date-nav button:active { box-shadow: inset 0 1px 3px rgba(0,0,0,0.15); }
         .date-nav .date-label {
             font-size: 14px;
             font-weight: 600;
@@ -251,34 +289,41 @@
             align-items: center;
             gap: 12px;
             padding: 12px 16px;
-            border-radius: 10px;
-            margin-bottom: 4px;
+            border-radius: 6px;
+            margin-bottom: 2px;
             transition: background 0.15s;
             cursor: pointer;
+            border-bottom: 1px solid #e8e0d4;
+            background: linear-gradient(90deg, transparent 0px, transparent 40px, rgba(200,180,160,0.08) 40px, rgba(200,180,160,0.08) 41px, transparent 41px);
         }
-        .task-item:hover { background: #f9fafb; }
+        .task-item:hover { background: rgba(200,180,160,0.12); }
         .task-checkbox {
             width: 22px; height: 22px;
-            border: 2px solid #d1d5db;
-            border-radius: 6px;
+            border: 2px solid #a09585;
+            border-radius: 5px;
             cursor: pointer;
             display: flex; align-items: center; justify-content: center;
             flex-shrink: 0;
             transition: all 0.15s;
+            background: linear-gradient(180deg, #faf6ef 0%, #ede6da 100%);
+            box-shadow: inset 0 1px 2px rgba(0,0,0,0.1), 0 1px 0 rgba(255,255,255,0.6);
         }
         .task-checkbox.done {
-            background: var(--success);
-            border-color: var(--success);
+            background: linear-gradient(180deg, #4caf50 0%, #2e7d32 100%);
+            border-color: #1b5e20;
+            box-shadow: inset 0 1px 0 rgba(255,255,255,0.3), 0 1px 2px rgba(0,0,0,0.2);
         }
         .task-checkbox.done::after {
             content: '✓';
             color: white;
             font-size: 14px;
             font-weight: 700;
+            text-shadow: 0 -1px 0 rgba(0,0,0,0.2);
         }
         .task-checkbox.in_progress {
-            border-color: var(--warning);
-            background: #FEF3C7;
+            border-color: #b8860b;
+            background: linear-gradient(180deg, #ffd54f 0%, #f9a825 100%);
+            box-shadow: inset 0 1px 0 rgba(255,255,255,0.4), 0 1px 2px rgba(0,0,0,0.15);
         }
         .task-body { flex: 1; min-width: 0; }
         .task-title {
@@ -357,9 +402,9 @@
             align-items: center;
             gap: 8px;
             padding: 10px 16px;
-            border: 2px dashed #d1d5db;
+            border: 2px dashed #c0b8a8;
             background: none;
-            border-radius: 10px;
+            border-radius: 6px;
             width: 100%;
             cursor: pointer;
             color: var(--text-secondary);
@@ -370,33 +415,36 @@
         .add-task-btn:hover {
             border-color: var(--primary);
             color: var(--primary);
-            background: var(--primary-light);
+            background: rgba(29,114,196,0.06);
         }
 
         /* ─── Modal ───── */
         .modal-backdrop {
             position: fixed; top: 0; left: 0; right: 0; bottom: 0;
-            background: rgba(0,0,0,0.4);
+            background: rgba(30,20,10,0.55);
             display: none; align-items: center; justify-content: center;
             z-index: 1000;
         }
         .modal-backdrop.show { display: flex; }
         .modal {
-            background: white;
-            border-radius: 16px;
-            width: 520px;
+            background: var(--paper);
+            border-radius: 10px;
+            width: 540px;
             max-height: 90vh;
             overflow-y: auto;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.2);
+            box-shadow: 0 20px 60px rgba(0,0,0,0.4), 0 0 0 1px rgba(0,0,0,0.1), inset 0 1px 0 rgba(255,255,255,0.6);
+            border: 3px solid var(--leather-light);
         }
         .modal-header {
             display: flex;
             align-items: center;
             justify-content: space-between;
-            padding: 20px 24px;
-            border-bottom: 1px solid var(--border);
+            padding: 16px 24px;
+            border-bottom: 1px solid #d4ccc0;
+            background: linear-gradient(180deg, #f0ebe2 0%, #e8e0d4 100%);
+            border-radius: 7px 7px 0 0;
         }
-        .modal-header h3 { font-size: 17px; font-weight: 600; }
+        .modal-header h3 { font-size: 17px; font-weight: 700; font-family: "Noto Serif SC", serif; color: var(--leather); }
         .modal-close {
             width: 32px; height: 32px;
             border: none; background: none;
@@ -423,15 +471,18 @@
         .form-group input, .form-group select, .form-group textarea {
             width: 100%;
             padding: 10px 14px;
-            border: 1.5px solid var(--border);
-            border-radius: 8px;
+            border: 1px solid #b0a898;
+            border-radius: 5px;
             font-size: 14px;
             outline: none;
             transition: border-color 0.15s;
             font-family: inherit;
+            background: linear-gradient(180deg, #f0ebe2 0%, #faf6ef 4px, #faf6ef 100%);
+            box-shadow: inset 0 2px 3px rgba(0,0,0,0.08), 0 1px 0 rgba(255,255,255,0.5);
         }
         .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
             border-color: var(--primary);
+            box-shadow: inset 0 2px 3px rgba(0,0,0,0.08), 0 0 0 2px rgba(29,114,196,0.2);
         }
         .form-group textarea { resize: vertical; min-height: 80px; }
         .form-row {
@@ -441,26 +492,30 @@
         }
         .btn-primary {
             padding: 10px 24px;
-            background: var(--primary);
+            background: linear-gradient(180deg, #3a9be0 0%, #1a6cb0 50%, #155a92 100%);
             color: white;
-            border: none;
-            border-radius: 8px;
+            border: 1px solid #0f4a7a;
+            border-radius: 6px;
             font-size: 14px;
             font-weight: 600;
             cursor: pointer;
+            text-shadow: 0 -1px 1px rgba(0,0,0,0.3);
+            box-shadow: 0 2px 4px rgba(0,0,0,0.2), inset 0 1px 0 rgba(255,255,255,0.25);
         }
-        .btn-primary:hover { opacity: 0.9; }
+        .btn-primary:hover { background: linear-gradient(180deg, #4aabe0 0%, #2a7cc0 50%, #1a6aa2 100%); }
+        .btn-primary:active { box-shadow: inset 0 2px 4px rgba(0,0,0,0.3); }
         .btn-secondary {
             padding: 10px 24px;
-            background: white;
+            background: linear-gradient(180deg, #fefcf8 0%, #ede6da 100%);
             color: var(--text);
-            border: 1.5px solid var(--border);
-            border-radius: 8px;
+            border: 1px solid #b8b0a4;
+            border-radius: 6px;
             font-size: 14px;
             font-weight: 500;
             cursor: pointer;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1), inset 0 1px 0 rgba(255,255,255,0.8);
         }
-        .btn-secondary:hover { background: #f9fafb; }
+        .btn-secondary:hover { background: linear-gradient(180deg, #fff 0%, #f0ebe2 100%); }
         .btn-danger {
             padding: 10px 24px;
             background: #FEE2E2;
@@ -558,14 +613,16 @@
             position: relative;
         }
         .weekly-bar .bar-total {
-            background: #E5E7EB;
+            background: linear-gradient(180deg, #d8d0c4 0%, #c8c0b4 100%);
+            box-shadow: inset 0 1px 2px rgba(0,0,0,0.1);
         }
         .weekly-bar .bar-done {
-            background: var(--primary);
+            background: linear-gradient(180deg, #3a9be0 0%, #1a6cb0 100%);
             position: absolute;
             bottom: 0;
             width: 100%;
             border-radius: 4px 4px 0 0;
+            box-shadow: inset 0 1px 0 rgba(255,255,255,0.25);
         }
         .weekly-bar .day-label {
             font-size: 12px;
@@ -588,19 +645,23 @@
             padding: 0 20px 12px;
         }
         .filter-chip {
-            padding: 4px 12px;
-            border: 1px solid var(--border);
-            border-radius: 20px;
+            padding: 5px 14px;
+            border: 1px solid #b0a898;
+            border-radius: 14px;
             font-size: 12px;
             cursor: pointer;
-            background: white;
+            background: linear-gradient(180deg, #fefcf8 0%, #ede6da 100%);
             color: var(--text-secondary);
+            box-shadow: 0 1px 2px rgba(0,0,0,0.08), inset 0 1px 0 rgba(255,255,255,0.7);
+            font-weight: 500;
         }
-        .filter-chip:hover { background: #f9fafb; }
+        .filter-chip:hover { background: linear-gradient(180deg, #fff 0%, #f0ebe2 100%); }
         .filter-chip.active {
-            background: var(--primary);
+            background: linear-gradient(180deg, #3a9be0 0%, #1a6cb0 50%, #155a92 100%);
             color: white;
-            border-color: var(--primary);
+            border-color: #0f4a7a;
+            text-shadow: 0 -1px 0 rgba(0,0,0,0.2);
+            box-shadow: inset 0 1px 0 rgba(255,255,255,0.2), 0 1px 2px rgba(0,0,0,0.15);
         }
 
         /* ─── Responsive ───── */
@@ -727,6 +788,181 @@
         }
         .review-btn.clear:hover { background: #f3f4f6; }
 
+        /* ─── Calendar ───── */
+        .cal-grid {
+            display: grid; grid-template-columns: repeat(7, 1fr);
+            gap: 1px; background: #c8c0b4;
+        }
+        .cal-header {
+            background: linear-gradient(180deg, #e8e0d4 0%, #d8d0c4 100%);
+            padding: 8px; text-align: center;
+            font-size: 12px; font-weight: 600; color: var(--leather);
+        }
+        .cal-day {
+            background: var(--paper); min-height: 90px; padding: 4px;
+            font-size: 11px; cursor: pointer;
+        }
+        .cal-day:hover { background: #f0ebe2; }
+        .cal-day.other-month { opacity: 0.35; }
+        .cal-day.today { background: #e8dfd2; }
+        .cal-day .day-num {
+            font-size: 13px; font-weight: 700; margin-bottom: 2px;
+            color: var(--text); font-family: "Noto Serif SC", serif;
+        }
+        .cal-day.today .day-num { color: var(--primary); }
+        .cal-task {
+            padding: 2px 4px; border-radius: 3px; margin-bottom: 1px;
+            font-size: 10px; overflow: hidden; text-overflow: ellipsis;
+            white-space: nowrap; cursor: pointer;
+        }
+        .cal-task.urgent { background: #FEE2E2; color: var(--danger); }
+        .cal-task.high { background: #FFEDD5; color: var(--high); }
+        .cal-task.medium { background: #FEF3C7; color: var(--medium); }
+        .cal-task.low { background: #F3F4F6; color: var(--low); }
+        .cal-task.done { background: #D1FAE5; color: #065F46; text-decoration: line-through; }
+
+        /* ─── Workload ───── */
+        .workload-card {
+            display: flex; align-items: center; gap: 16px;
+            padding: 16px; border: 1px solid var(--border);
+            border-radius: var(--radius); margin-bottom: 8px;
+        }
+        .workload-bar {
+            flex: 1; height: 24px; background: #f3f4f6;
+            border-radius: 12px; overflow: hidden; position: relative;
+        }
+        .workload-fill {
+            height: 100%; border-radius: 12px; transition: width 0.5s;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 11px; font-weight: 600; color: white; min-width: 30px;
+        }
+        .workload-fill.light { background: var(--success); }
+        .workload-fill.normal { background: var(--warning); }
+        .workload-fill.heavy { background: var(--danger); }
+        .workload-meta {
+            display: flex; gap: 16px; font-size: 12px;
+            color: var(--text-secondary); min-width: 200px;
+        }
+
+        /* ─── Tags ───── */
+        .tag-pill {
+            display: inline-flex; align-items: center; gap: 3px;
+            padding: 1px 8px; border-radius: 10px;
+            font-size: 11px; font-weight: 500; color: white;
+        }
+        .tag-select { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 4px; }
+        .tag-option {
+            padding: 4px 10px; border-radius: 12px; font-size: 12px;
+            cursor: pointer; border: 2px solid transparent;
+            transition: all 0.15s;
+        }
+        .tag-option.selected { border-color: var(--primary); }
+
+        /* ─── Time Tracking ───── */
+        .time-entry-row {
+            display: flex; align-items: center; gap: 8px;
+            padding: 6px 0; font-size: 13px; border-bottom: 1px solid #f9fafb;
+        }
+        .time-total {
+            font-size: 20px; font-weight: 700; color: var(--primary);
+        }
+
+        /* ─── Subtasks ───── */
+        .subtask-item {
+            display: flex; align-items: center; gap: 8px;
+            padding: 6px 0; font-size: 13px;
+        }
+        .subtask-check {
+            width: 18px; height: 18px; border: 2px solid #d1d5db;
+            border-radius: 4px; cursor: pointer;
+            display: flex; align-items: center; justify-content: center;
+            flex-shrink: 0; font-size: 11px; transition: all 0.15s;
+        }
+        .subtask-check.done { background: var(--success); border-color: var(--success); color: white; }
+        .subtask-title { flex: 1; }
+        .subtask-title.done { text-decoration: line-through; color: #aaa; }
+        .subtask-del { border: none; background: none; cursor: pointer; color: #ccc; font-size: 14px; }
+        .subtask-del:hover { color: var(--danger); }
+
+        /* ─── Activity Log ───── */
+        .activity-item {
+            display: flex; gap: 8px; padding: 4px 0;
+            font-size: 12px; color: var(--text-secondary);
+            border-bottom: 1px solid #f9fafb;
+        }
+        .activity-item .act-dot {
+            width: 6px; height: 6px; border-radius: 50%;
+            background: var(--primary); margin-top: 5px; flex-shrink: 0;
+        }
+        .activity-item .act-user { font-weight: 600; color: var(--text); }
+        .activity-item .act-time { font-size: 11px; }
+
+        /* ─── Notification Bell ───── */
+        .notif-bell {
+            position: relative; cursor: pointer;
+            width: 36px; height: 36px;
+            display: flex; align-items: center; justify-content: center;
+            border-radius: 6px; border: none; background: none;
+            font-size: 20px; color: #ddd0c0;
+        }
+        .notif-bell:hover { background: rgba(255,255,255,0.12); }
+        .notif-badge {
+            position: absolute; top: 2px; right: 2px;
+            background: var(--danger); color: white;
+            font-size: 10px; font-weight: 700;
+            min-width: 16px; height: 16px;
+            border-radius: 8px; display: flex;
+            align-items: center; justify-content: center;
+            padding: 0 4px;
+        }
+        .notif-dropdown {
+            position: absolute; right: 0; top: 42px;
+            background: white; border-radius: 12px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.15);
+            border: 1px solid var(--border);
+            width: 340px; max-height: 400px;
+            overflow-y: auto; display: none; z-index: 300;
+        }
+        .notif-dropdown.show { display: block; }
+        .notif-dropdown-header {
+            padding: 12px 16px; border-bottom: 1px solid var(--border);
+            display: flex; justify-content: space-between; align-items: center;
+            font-size: 14px; font-weight: 600;
+        }
+        .notif-item {
+            padding: 10px 16px; border-bottom: 1px solid #f3f4f6;
+            font-size: 13px; cursor: pointer;
+        }
+        .notif-item:hover { background: #f9fafb; }
+        .notif-item.unread { background: #EEF2FF; }
+        .notif-item .title { font-weight: 600; margin-bottom: 2px; }
+        .notif-item .time { font-size: 11px; color: var(--text-secondary); }
+        .notif-empty { padding: 24px; text-align: center; color: var(--text-secondary); font-size: 13px; }
+
+        /* ─── Accept Button ───── */
+        .accept-btn {
+            padding: 6px 16px; border-radius: 6px;
+            font-size: 12px; font-weight: 600;
+            cursor: pointer; border: 1.5px solid var(--success);
+            color: var(--success); background: white;
+        }
+        .accept-btn:hover { background: #D1FAE5; }
+        .accepted-badge {
+            font-size: 11px; padding: 2px 8px; border-radius: 4px;
+            background: #D1FAE5; color: #065F46; font-weight: 600;
+        }
+        .pending-badge {
+            font-size: 11px; padding: 2px 8px; border-radius: 4px;
+            background: #FEF3C7; color: #92400E; font-weight: 600;
+        }
+
+        /* ─── Deadline Warning ───── */
+        .deadline-soon {
+            background: #FEF3C7; color: #92400E;
+            font-size: 11px; padding: 2px 6px; border-radius: 4px;
+            font-weight: 600;
+        }
+
         /* ─── Overdue ───── */
         .overdue-badge {
             display: inline-flex; align-items: center; gap: 4px;
@@ -790,18 +1026,572 @@
             bottom: 24px;
             right: 24px;
             padding: 12px 20px;
-            background: #1a1a2e;
-            color: white;
-            border-radius: 10px;
+            background: linear-gradient(180deg, #5a4030 0%, #3a2518 100%);
+            color: #f0e6d8;
+            border-radius: 8px;
             font-size: 14px;
             z-index: 2000;
             opacity: 0;
             transform: translateY(10px);
             transition: all 0.3s;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.3), inset 0 1px 0 rgba(255,255,255,0.1);
+            border: 1px solid rgba(255,255,255,0.08);
         }
         .toast.show {
             opacity: 1;
             transform: translateY(0);
+        }
+
+        /* ─── Agreement Form ─── */
+        .agreement-body {
+            padding: 24px;
+        }
+        .agreement-parties {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0;
+            border: 1px solid #c8bfb0;
+            border-radius: var(--radius);
+            overflow: hidden;
+            margin-bottom: 20px;
+        }
+        .agreement-party {
+            padding: 20px;
+        }
+        .agreement-party:first-child {
+            border-right: 1px solid #c8bfb0;
+        }
+        .agreement-party-title {
+            font-family: "Noto Serif SC", serif;
+            font-size: 14px;
+            font-weight: 700;
+            color: var(--leather);
+            margin-bottom: 16px;
+            padding-bottom: 8px;
+            border-bottom: 1px solid #e0d8cc;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .agreement-field {
+            margin-bottom: 14px;
+        }
+        .agreement-field label {
+            display: block;
+            font-size: 12px;
+            font-weight: 600;
+            color: var(--text-secondary);
+            margin-bottom: 4px;
+        }
+        .agreement-field input,
+        .agreement-field textarea,
+        .agreement-field select {
+            width: 100%;
+            padding: 8px 10px;
+            border: 1px solid #b0a898;
+            border-radius: 5px;
+            font-size: 13px;
+            font-family: inherit;
+            background: linear-gradient(180deg, #f0ebe2 0%, #faf6ef 4px, #faf6ef 100%);
+            box-shadow: inset 0 1px 2px rgba(0,0,0,0.06);
+            outline: none;
+        }
+        .agreement-field input:focus,
+        .agreement-field textarea:focus,
+        .agreement-field select:focus {
+            border-color: var(--primary);
+            box-shadow: inset 0 1px 2px rgba(0,0,0,0.06), 0 0 0 2px rgba(29,114,196,0.15);
+        }
+        .agreement-field textarea {
+            min-height: 60px;
+            resize: vertical;
+        }
+        /* 流程 SOC 表 */
+        .soc-toggle {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 16px;
+            margin-bottom: 16px;
+            border: 1px dashed #b0a898;
+            border-radius: var(--radius);
+            cursor: pointer;
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--primary);
+            background: linear-gradient(180deg, #fefcf8 0%, #f5f0e8 100%);
+            transition: all 0.15s;
+            user-select: none;
+        }
+        .soc-toggle:hover { background: #eee8dd; border-color: var(--primary); }
+        .soc-toggle .arrow { transition: transform 0.2s; font-size: 11px; }
+        .soc-toggle.open .arrow { transform: rotate(90deg); }
+        .soc-wrap {
+            display: none;
+            border: 1px solid #c8bfb0;
+            border-radius: var(--radius);
+            margin-bottom: 20px;
+            overflow: hidden;
+        }
+        .soc-wrap.open { display: block; }
+        .soc-banner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 12px 16px;
+            background: linear-gradient(180deg, #ebe5da 0%, #e0d8cc 100%);
+            border-bottom: 1px solid #d4ccc0;
+        }
+        .soc-banner h4 {
+            font-family: "Noto Serif SC", serif;
+            font-size: 14px; font-weight: 700; color: var(--leather); margin: 0;
+        }
+        .soc-section {
+            border-bottom: 1px solid #d4ccc0;
+        }
+        .soc-section:last-child { border-bottom: none; }
+        .soc-section-head {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 10px 16px;
+            background: #f5f0e8;
+            cursor: pointer;
+            user-select: none;
+        }
+        .soc-section-head:hover { background: #ede6da; }
+        .soc-section-head h5 {
+            font-size: 13px; font-weight: 700; color: var(--leather); margin: 0;
+            display: flex; align-items: center; gap: 6px;
+        }
+        .soc-section-head .arrow { font-size: 10px; color: var(--text-secondary); transition: transform 0.2s; }
+        .soc-section.open .soc-section-head .arrow { transform: rotate(90deg); }
+        .soc-section-body {
+            display: none;
+            padding: 0;
+        }
+        .soc-section.open .soc-section-body { display: block; }
+        .soc-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 12px;
+        }
+        .soc-table th {
+            background: #f0ebe2;
+            padding: 7px 8px;
+            text-align: left;
+            font-weight: 600;
+            color: var(--leather);
+            border-bottom: 1px solid #d4ccc0;
+            font-size: 11px;
+        }
+        .soc-table td {
+            padding: 3px 4px;
+            border-bottom: 1px solid #ece4d8;
+            vertical-align: top;
+        }
+        .soc-table input, .soc-table textarea {
+            width: 100%;
+            padding: 5px 6px;
+            border: 1px solid transparent;
+            border-radius: 3px;
+            font-size: 12px;
+            font-family: inherit;
+            background: transparent;
+            resize: vertical;
+        }
+        .soc-table input:focus, .soc-table textarea:focus {
+            background: #faf6ef;
+            border-color: var(--primary);
+            outline: none;
+            box-shadow: 0 0 0 2px rgba(29,114,196,0.12);
+        }
+        .soc-table input::placeholder, .soc-table textarea::placeholder { color: #bbb5a8; }
+        .soc-table .num-cell { text-align: center; font-weight: 700; color: var(--text-secondary); width: 28px; }
+        .soc-del {
+            border: none; background: none; color: #c0b0a0; cursor: pointer;
+            font-size: 14px; padding: 2px 4px; border-radius: 3px;
+        }
+        .soc-del:hover { color: var(--danger); background: rgba(220,38,38,0.08); }
+        .soc-add-row {
+            border: 1px dashed #b0a898;
+            background: transparent;
+            color: var(--primary);
+            font-size: 11px; font-weight: 600;
+            padding: 5px 12px;
+            border-radius: 4px;
+            cursor: pointer;
+            margin: 8px 16px;
+        }
+        .soc-add-row:hover { background: rgba(29,114,196,0.06); border-color: var(--primary); }
+        .soc-sign-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 8px;
+            padding: 12px 16px;
+        }
+        .soc-sign-item {
+            display: flex; align-items: center; gap: 6px; font-size: 12px; color: var(--text);
+        }
+        .soc-sign-item label { font-weight: 600; white-space: nowrap; min-width: 56px; }
+        .soc-sign-item input {
+            flex: 1; padding: 4px 6px; border: none; border-bottom: 1px solid #b0a898;
+            background: transparent; font-size: 12px; font-family: inherit; outline: none;
+        }
+        .soc-sign-item input:focus { border-color: var(--primary); }
+
+        .agreement-sipoc {
+            border: 1px solid #c8bfb0;
+            border-radius: var(--radius);
+            padding: 16px;
+            margin-bottom: 20px;
+            background: linear-gradient(180deg, #fefcf8 0%, #f5f0e8 100%);
+        }
+        .agreement-sipoc-title {
+            font-size: 13px;
+            font-weight: 700;
+            color: var(--leather);
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .agreement-sipoc-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 8px;
+        }
+        .agreement-sipoc-grid label {
+            font-size: 11px;
+            font-weight: 700;
+            color: #1E40AF;
+            margin-bottom: 2px;
+            display: block;
+        }
+        .agreement-sipoc-grid input {
+            width: 100%;
+            padding: 6px 8px;
+            border: 1px solid #b0a898;
+            border-radius: 4px;
+            font-size: 12px;
+            font-family: inherit;
+            background: #faf6ef;
+        }
+        .agreement-footer {
+            border-top: 1px solid #c8bfb0;
+            padding-top: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 16px;
+        }
+        .agreement-signatures {
+            display: flex;
+            gap: 32px;
+            align-items: center;
+        }
+        .agreement-sig {
+            font-size: 13px;
+            color: var(--text);
+        }
+        .agreement-sig .name {
+            display: inline-block;
+            min-width: 80px;
+            border-bottom: 1px solid #a09585;
+            padding: 2px 4px;
+            font-weight: 600;
+            color: var(--leather);
+        }
+        .agreement-confirm {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 13px;
+            cursor: pointer;
+            user-select: none;
+            margin-bottom: 16px;
+        }
+        .agreement-confirm input[type="checkbox"] {
+            width: 16px;
+            height: 16px;
+            accent-color: var(--primary);
+        }
+        /* 协议卡片 */
+        .agreement-card {
+            border: 1px solid #d4ccc0;
+            border-radius: var(--radius);
+            padding: 16px;
+            margin-bottom: 12px;
+            background: linear-gradient(180deg, #fefcf8 0%, #f5f0e8 100%);
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+        }
+        .agreement-card .ac-col {
+            font-size: 13px;
+            line-height: 1.7;
+        }
+        .agreement-card .ac-col strong {
+            color: var(--leather);
+        }
+        .agreement-card .ac-meta {
+            grid-column: 1 / -1;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 10px;
+            border-top: 1px solid #e0d8cc;
+            font-size: 12px;
+            color: var(--text-secondary);
+        }
+        .agreement-card .ac-status {
+            padding: 2px 10px;
+            border-radius: 12px;
+            font-size: 11px;
+            font-weight: 600;
+        }
+        .ac-status.pending { background: #FEF3C7; color: #92400E; }
+        .ac-status.accepted { background: #D1FAE5; color: #065F46; }
+        @media (max-width: 768px) {
+            .agreement-parties { grid-template-columns: 1fr; }
+            .agreement-party:first-child { border-right: none; border-bottom: 1px solid #c8bfb0; }
+            .agreement-sipoc-grid { grid-template-columns: 1fr; }
+            .agreement-card { grid-template-columns: 1fr; }
+        }
+
+        /* ─── Methodology Panel ─── */
+        .method-hero {
+            display: grid;
+            grid-template-columns: 1fr 80px 1fr;
+            gap: 0;
+            align-items: stretch;
+            padding: 24px 20px;
+        }
+        .method-book-card {
+            background: linear-gradient(180deg, #fefcf8 0%, #f0ebe2 100%);
+            border: 1px solid #c8bfb0;
+            border-radius: var(--radius);
+            padding: 20px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.1), inset 0 1px 0 rgba(255,255,255,0.8);
+        }
+        .method-book-card h3 {
+            font-family: "Noto Serif SC", serif;
+            font-size: 16px;
+            color: var(--leather);
+            margin-bottom: 4px;
+        }
+        .method-book-card .subtitle {
+            font-size: 12px;
+            color: var(--text-secondary);
+            margin-bottom: 12px;
+        }
+        .method-book-card .tag {
+            display: inline-block;
+            padding: 2px 10px;
+            border-radius: 12px;
+            font-size: 11px;
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+        .method-connector {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-secondary);
+            font-size: 12px;
+            font-weight: 600;
+        }
+        .method-connector .plus {
+            font-size: 24px;
+            color: var(--primary);
+            margin-bottom: 4px;
+        }
+        .method-section {
+            padding: 20px;
+        }
+        .method-section-title {
+            font-family: "Noto Serif SC", serif;
+            font-size: 15px;
+            font-weight: 700;
+            color: var(--leather);
+            margin-bottom: 16px;
+            padding-bottom: 8px;
+            border-bottom: 1px solid #d4ccc0;
+        }
+        .method-card {
+            border: 1px solid #d4ccc0;
+            border-radius: var(--radius);
+            margin-bottom: 10px;
+            overflow: hidden;
+            background: linear-gradient(180deg, #fefcf8 0%, #f5f0e8 100%);
+        }
+        .method-card-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 12px 16px;
+            cursor: pointer;
+            user-select: none;
+            transition: background 0.15s;
+        }
+        .method-card-header:hover {
+            background: rgba(200,180,160,0.12);
+        }
+        .method-card-header .icon {
+            font-size: 18px;
+            margin-right: 10px;
+        }
+        .method-card-header .title {
+            flex: 1;
+            font-size: 14px;
+            font-weight: 600;
+        }
+        .method-card-header .arrow {
+            font-size: 12px;
+            color: var(--text-secondary);
+            transition: transform 0.2s;
+        }
+        .method-card.open .method-card-header .arrow {
+            transform: rotate(90deg);
+        }
+        .method-card-body {
+            display: none;
+            padding: 0 16px 16px;
+            font-size: 13px;
+            line-height: 1.8;
+            color: var(--text);
+        }
+        .method-card.open .method-card-body {
+            display: block;
+        }
+        .method-card-body ul {
+            margin: 8px 0;
+            padding-left: 20px;
+        }
+        .method-card-body li {
+            margin-bottom: 4px;
+        }
+        .method-card-body .highlight {
+            background: #FEF3C7;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-weight: 600;
+        }
+        .method-card-body .example-box {
+            background: #f0ebe2;
+            border: 1px solid #d4ccc0;
+            border-radius: 6px;
+            padding: 12px;
+            margin: 8px 0;
+            font-size: 13px;
+        }
+        .method-workflow {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 12px;
+            padding: 0 20px 20px;
+        }
+        .method-workflow-step {
+            background: linear-gradient(180deg, #fefcf8 0%, #f0ebe2 100%);
+            border: 1px solid #c8bfb0;
+            border-radius: var(--radius);
+            padding: 16px;
+            text-align: center;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+        }
+        .method-workflow-step .step-num {
+            width: 24px; height: 24px;
+            background: var(--primary);
+            color: white;
+            border-radius: 50%;
+            font-size: 12px; font-weight: 700;
+            display: inline-flex;
+            align-items: center; justify-content: center;
+            margin-bottom: 8px;
+        }
+        .method-workflow-step .step-title {
+            font-size: 13px; font-weight: 600;
+            margin-bottom: 6px;
+        }
+        .method-workflow-step .step-books span {
+            display: inline-block;
+            padding: 1px 6px;
+            border-radius: 3px;
+            margin: 2px;
+            font-size: 11px;
+        }
+        .method-workflow-step .step-books .book1 {
+            background: #DBEAFE; color: #1E40AF;
+        }
+        .method-workflow-step .step-books .book2 {
+            background: #D1FAE5; color: #065F46;
+        }
+        .method-practice textarea {
+            width: 100%;
+            padding: 12px 14px;
+            border: 1px solid #b0a898;
+            border-radius: 5px;
+            font-size: 14px;
+            font-family: inherit;
+            min-height: 100px;
+            resize: vertical;
+            background: linear-gradient(180deg, #f0ebe2 0%, #faf6ef 4px, #faf6ef 100%);
+            box-shadow: inset 0 2px 3px rgba(0,0,0,0.08), 0 1px 0 rgba(255,255,255,0.5);
+            outline: none;
+        }
+        .method-practice textarea:focus {
+            border-color: var(--primary);
+            box-shadow: inset 0 2px 3px rgba(0,0,0,0.08), 0 0 0 2px rgba(29,114,196,0.2);
+        }
+        .method-word-count {
+            font-size: 12px;
+            color: var(--text-secondary);
+            text-align: right;
+            margin-top: 4px;
+        }
+        .method-word-count.over {
+            color: var(--danger);
+            font-weight: 600;
+        }
+        .method-checklist {
+            list-style: none;
+            padding: 0;
+            margin: 8px 0;
+        }
+        .method-checklist li {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 6px 0;
+            font-size: 13px;
+            cursor: pointer;
+        }
+        .method-checklist li .check {
+            width: 18px; height: 18px;
+            border: 2px solid #a09585;
+            border-radius: 4px;
+            display: flex; align-items: center; justify-content: center;
+            flex-shrink: 0;
+            transition: all 0.15s;
+            font-size: 11px;
+            background: linear-gradient(180deg, #faf6ef 0%, #ede6da 100%);
+        }
+        .method-checklist li.checked .check {
+            background: linear-gradient(180deg, #4caf50 0%, #2e7d32 100%);
+            border-color: #1b5e20;
+            color: white;
+        }
+        .method-checklist li.checked .check::after {
+            content: '\2713';
+        }
+        @media (max-width: 768px) {
+            .method-hero { grid-template-columns: 1fr; }
+            .method-connector { flex-direction: row; padding: 12px 0; }
+            .method-connector .plus { margin-bottom: 0; margin-right: 8px; }
+            .method-workflow { grid-template-columns: 1fr 1fr; }
+            .method-sipoc-grid { grid-template-columns: 1fr !important; }
         }
     </style>
 </head>
@@ -813,11 +1603,26 @@
             <div class="header-nav">
                 <button class="active" onclick="switchView('overview')">总览</button>
                 <button onclick="switchView('tasks')">任务</button>
+                <button onclick="switchView('calendar')">日历</button>
                 <button onclick="switchView('report')">日报</button>
+                <button onclick="switchView('methodology')">方法论</button>
                 <button onclick="switchView('settings')" id="settings-tab" style="display:none">设置</button>
             </div>
         </div>
         <div class="header-right">
+            <div style="position:relative">
+                <button class="notif-bell" onclick="toggleNotifications()" id="notif-bell-btn">
+                    <span>&#128276;</span>
+                    <span class="notif-badge" id="notif-badge" style="display:none">0</span>
+                </button>
+                <div class="notif-dropdown" id="notif-dropdown">
+                    <div class="notif-dropdown-header">
+                        <span>通知</span>
+                        <button style="border:none;background:none;color:var(--primary);font-size:12px;cursor:pointer" onclick="markAllRead()">全部已读</button>
+                    </div>
+                    <div id="notif-list"><div class="notif-empty">暂无通知</div></div>
+                </div>
+            </div>
             <div class="user-menu">
                 <button class="user-menu-btn" onclick="toggleMenu()">
                     <div class="avatar" id="my-avatar"></div>
@@ -881,15 +1686,41 @@
                     <button class="filter-chip" data-status="done" onclick="filterStatus(this)">已完成</button>
                 </div>
                 <div class="task-list" id="task-list"></div>
-                <div style="padding:8px;display:flex;gap:8px">
-                    <button class="add-task-btn" onclick="showAddTask()" style="margin:0">
-                        <span style="font-size:18px">+</span> 添加任务
-                    </button>
-                    <button class="add-task-btn" onclick="copyToTomorrow()" style="margin:0;max-width:220px"
-                            title="将今天未完成的任务复制到明天">
-                        <span style="font-size:16px">→</span> 未完成顺延明天
-                    </button>
+                <div style="padding:8px;display:flex;gap:8px" id="admin-task-actions"></div>
+            </div>
+        </div>
+
+        <!-- Calendar View -->
+        <div id="view-calendar" style="display:none">
+            <div class="panel">
+                <div class="panel-header">
+                    <div style="display:flex;align-items:center;gap:16px">
+                        <h2>日历视图</h2>
+                        <div class="date-nav">
+                            <button onclick="changeCalMonth(-1)">◀</button>
+                            <span class="date-label" id="cal-month-label"></span>
+                            <button onclick="changeCalMonth(1)">▶</button>
+                        </div>
+                    </div>
+                    <select id="cal-user-filter" onchange="loadCalendar()" style="padding:6px 10px;border:1px solid var(--border);border-radius:8px;font-size:13px">
+                        <option value="">全部成员</option>
+                    </select>
                 </div>
+                <div class="cal-grid" id="cal-grid">
+                    <div class="cal-header">周一</div><div class="cal-header">周二</div>
+                    <div class="cal-header">周三</div><div class="cal-header">周四</div>
+                    <div class="cal-header">周五</div><div class="cal-header">周六</div>
+                    <div class="cal-header">周日</div>
+                </div>
+                <div id="cal-days"></div>
+            </div>
+
+            <!-- Workload Section -->
+            <div class="panel" style="margin-top:24px">
+                <div class="panel-header">
+                    <h2>本周工作量</h2>
+                </div>
+                <div style="padding:16px" id="workload-list"></div>
             </div>
         </div>
 
@@ -939,6 +1770,59 @@
                     <button class="btn-primary" onclick="showAddUser()" style="font-size:13px;padding:8px 16px">+ 添加成员</button>
                 </div>
                 <div style="padding:16px" id="user-list"></div>
+            </div>
+        </div>
+
+        <!-- Methodology View -->
+        <div id="view-methodology" style="display:none">
+            <!-- 一分钟目标协议书 -->
+            <div class="panel">
+                <div class="panel-header">
+                    <h2>一分钟目标协议书</h2>
+                    <span style="font-size:12px;color:var(--text-secondary)">《一分钟经理人》× 《流程密码》</span>
+                </div>
+                <div id="agreement-form"></div>
+            </div>
+
+            <!-- 已签署的协议列表 -->
+            <div class="panel" style="margin-top:24px">
+                <div class="panel-header">
+                    <h2>今日协议</h2>
+                    <span style="font-size:12px;color:var(--text-secondary)" id="agreement-date"></span>
+                </div>
+                <div id="agreement-list" style="padding:16px"></div>
+            </div>
+
+            <div class="panel" style="margin-top:24px">
+                <div class="panel-header">
+                    <div style="display:flex;align-items:center;gap:8px">
+                        <span style="font-size:18px">📘</span>
+                        <h2>一分钟经理人 — 三大工具</h2>
+                    </div>
+                    <span style="font-size:12px;color:var(--text-secondary);background:#DBEAFE;padding:2px 8px;border-radius:4px">管人</span>
+                </div>
+                <div id="method-book1-cards" style="padding:12px 16px"></div>
+            </div>
+
+            <div class="panel" style="margin-top:24px">
+                <div class="panel-header">
+                    <div style="display:flex;align-items:center;gap:8px">
+                        <span style="font-size:18px">📗</span>
+                        <h2>流程密码 — 核心框架</h2>
+                    </div>
+                    <span style="font-size:12px;color:var(--text-secondary);background:#D1FAE5;padding:2px 8px;border-radius:4px">管事</span>
+                </div>
+                <div id="method-book2-cards" style="padding:12px 16px"></div>
+            </div>
+
+            <div class="panel" style="margin-top:24px">
+                <div class="panel-header">
+                    <div style="display:flex;align-items:center;gap:8px">
+                        <span style="font-size:18px">✏️</span>
+                        <h2>练习区</h2>
+                    </div>
+                </div>
+                <div id="method-practice" class="method-practice"></div>
             </div>
         </div>
     </div>
@@ -1005,6 +1889,45 @@
                         <option value="done">已完成</option>
                     </select>
                 </div>
+                <div class="form-group" id="recurrence-group">
+                    <label>重复规则</label>
+                    <select id="task-recurrence">
+                        <option value="">不重复</option>
+                        <option value="daily">每天</option>
+                        <option value="weekly">每周</option>
+                        <option value="monthly">每月</option>
+                    </select>
+                </div>
+                <div class="form-group" id="tags-group" style="display:none">
+                    <label>标签</label>
+                    <div class="tag-select" id="tag-select"></div>
+                    <div style="display:flex;gap:6px;margin-top:6px">
+                        <input type="text" id="new-tag-name" placeholder="新标签名" style="flex:1;padding:6px 10px;border:1.5px solid var(--border);border-radius:6px;font-size:12px">
+                        <input type="color" id="new-tag-color" value="#6B7280" style="width:32px;height:32px;border:none;cursor:pointer">
+                        <button onclick="createTag()" style="padding:6px 12px;background:var(--primary);color:white;border:none;border-radius:6px;font-size:12px;cursor:pointer">+</button>
+                    </div>
+                </div>
+                <div class="form-group" id="time-group" style="display:none">
+                    <label>工时记录</label>
+                    <div style="display:flex;gap:8px;margin-bottom:8px">
+                        <input type="number" id="time-duration" placeholder="分钟" min="1" style="width:80px;padding:6px 10px;border:1.5px solid var(--border);border-radius:6px;font-size:12px">
+                        <input type="text" id="time-note" placeholder="备注" style="flex:1;padding:6px 10px;border:1.5px solid var(--border);border-radius:6px;font-size:12px">
+                        <button onclick="addTimeEntry()" style="padding:6px 12px;background:var(--primary);color:white;border:none;border-radius:6px;font-size:12px;cursor:pointer">记录</button>
+                    </div>
+                    <div id="time-entries"></div>
+                </div>
+                <div class="form-group" id="subtask-group" style="display:none">
+                    <label>子任务</label>
+                    <div id="subtask-list" style="margin-bottom:8px"></div>
+                    <div style="display:flex;gap:8px">
+                        <input type="text" id="new-subtask" placeholder="添加子任务..." style="flex:1;padding:8px 12px;border:1.5px solid var(--border);border-radius:8px;font-size:13px" onkeydown="if(event.key==='Enter')addSubtask()">
+                        <button onclick="addSubtask()" style="padding:8px 14px;background:var(--primary);color:white;border:none;border-radius:8px;font-size:13px;cursor:pointer">添加</button>
+                    </div>
+                </div>
+                <div class="form-group" id="activity-group" style="display:none">
+                    <label>操作记录</label>
+                    <div id="activity-list" style="max-height:150px;overflow-y:auto"></div>
+                </div>
                 <div class="form-group" id="review-group" style="display:none">
                     <label>审阅状态</label>
                     <div id="review-display"></div>
@@ -1018,7 +1941,7 @@
                     <label>评论</label>
                     <div class="comment-section">
                         <div class="comment-input-row">
-                            <input type="text" id="comment-input" placeholder="输入评论..." onkeydown="if(event.key==='Enter')addComment()">
+                            <input type="text" id="comment-input" placeholder="输入评论...  用@姓名 可通知对方" onkeydown="if(event.key==='Enter')addComment()">
                             <button onclick="addComment()">发送</button>
                         </div>
                         <div id="comment-list"></div>
@@ -1139,6 +2062,8 @@
 
     <script>
     // ─── State ─────────────────────────────────────────────────
+    // Auto-detect base path (supports /taskflow or root /)
+    const BASE = window.location.pathname.replace(/\/dashboard\/?$/, '') || '';
     let currentUser = null;
     let users = [];
     let currentDate = new Date().toISOString().split('T')[0];
@@ -1147,8 +2072,8 @@
 
     // ─── Init ──────────────────────────────────────────────────
     async function init() {
-        const res = await fetch('/api/me');
-        if (!res.ok) { window.location.href = '/login'; return; }
+        const res = await fetch(BASE + '/api/me');
+        if (!res.ok) { window.location.href = BASE + '/login'; return; }
         currentUser = await res.json();
 
         document.getElementById('my-name').textContent = currentUser.display_name;
@@ -1156,17 +2081,32 @@
         av.style.background = currentUser.avatar_color;
         av.textContent = currentUser.display_name[0];
 
+        // All users can add tasks (employees only for themselves)
+        let taskActionsHtml = `
+            <button class="add-task-btn" onclick="showAddTask()" style="margin:0">
+                <span style="font-size:18px">+</span> 添加任务
+            </button>
+        `;
         if (currentUser.role === 'admin') {
             document.getElementById('settings-tab').style.display = '';
+            taskActionsHtml += `
+                <button class="add-task-btn" onclick="copyToTomorrow()" style="margin:0;max-width:220px"
+                        title="将今天未完成的任务复制到明天">
+                    <span style="font-size:16px">→</span> 未完成顺延明天
+                </button>
+            `;
         }
+        document.getElementById('admin-task-actions').innerHTML = taskActionsHtml;
 
         await loadUsers();
         updateDateLabel();
         loadOverview();
+        loadNotifications();
     }
 
     // ─── API Helper ────────────────────────────────────────────
     async function api(url, opts = {}) {
+        url = BASE + url;
         if (opts.body && typeof opts.body === 'object') {
             opts.headers = {'Content-Type': 'application/json'};
             opts.body = JSON.stringify(opts.body);
@@ -1203,13 +2143,17 @@
         event.target.classList.add('active');
         document.getElementById('view-overview').style.display = view === 'overview' ? '' : 'none';
         document.getElementById('view-tasks').style.display = view === 'tasks' ? '' : 'none';
+        document.getElementById('view-calendar').style.display = view === 'calendar' ? '' : 'none';
         document.getElementById('view-report').style.display = view === 'report' ? '' : 'none';
         document.getElementById('view-settings').style.display = view === 'settings' ? '' : 'none';
+        document.getElementById('view-methodology').style.display = view === 'methodology' ? '' : 'none';
 
         if (view === 'overview') loadOverview();
         if (view === 'tasks') loadTasks();
+        if (view === 'calendar') { initCalUserFilter(); loadCalendar(); }
         if (view === 'report') loadReport();
         if (view === 'settings') loadSettings();
+        if (view === 'methodology') loadMethodology();
     }
 
     // ─── Overview ──────────────────────────────────────────────
@@ -1251,11 +2195,22 @@
         // Team grid
         const grid = document.getElementById('team-grid');
         grid.innerHTML = '';
+        const statusIcon = {done:'✅', in_progress:'🔵', todo:'⚪'};
+        const priorityColors = {urgent:'var(--urgent)', high:'var(--high)', medium:'var(--warning)', low:'var(--low)'};
         stats.user_stats.forEach(u => {
             const pct = u.total > 0 ? Math.round(u.done / u.total * 100) : 0;
             const color = pct >= 80 ? 'var(--success)' : pct >= 40 ? 'var(--warning)' : '#d1d5db';
+            const taskRows = (u.tasks || []).map(t => {
+                const reviewBadge = t.review_status === 'approved' ? '<span class="review-badge review-approved" style="font-size:10px;padding:1px 5px">✓通过</span>' : t.review_status === 'needs_revision' ? '<span class="review-badge review-needs_revision" style="font-size:10px;padding:1px 5px">✗修改</span>' : '';
+                return `<div style="display:flex;align-items:center;gap:6px;padding:4px 0;font-size:12px;border-top:1px solid #f3f4f6">
+                    <span>${statusIcon[t.status]||'⚪'}</span>
+                    <span style="flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;${t.status==='done'?'text-decoration:line-through;color:#aaa':''}">${escHtml(t.title)}</span>
+                    ${reviewBadge}
+                    <span style="font-size:11px;font-weight:600;color:${t.progress>=80?'var(--success)':t.progress>=40?'var(--warning)':'#ccc'}">${t.progress}%</span>
+                </div>`;
+            }).join('');
             grid.innerHTML += `
-                <div class="team-card" onclick="viewUserTasks(${u.user_id})">
+                <div class="team-card" onclick="viewUserTasks(${u.user_id})" style="padding-bottom:8px">
                     <div class="team-card-header">
                         <div class="avatar" style="background:${u.avatar_color}">${u.display_name[0]}</div>
                         <div>
@@ -1266,11 +2221,12 @@
                     <div class="progress-bar-bg">
                         <div class="progress-bar-fill" style="width:${pct}%;background:${color}"></div>
                     </div>
-                    <div class="team-card-stats">
+                    <div class="team-card-stats" style="margin-bottom:8px">
                         <span><span class="dot dot-done"></span>${u.done} 完成</span>
                         <span><span class="dot dot-progress"></span>${u.in_progress} 进行中</span>
                         <span><span class="dot dot-todo"></span>${u.todo} 待办</span>
                     </div>
+                    ${taskRows || '<div style="font-size:12px;color:#ccc;text-align:center;padding:4px 0;border-top:1px solid #f3f4f6">暂无任务</div>'}
                 </div>
             `;
         });
@@ -1350,7 +2306,14 @@
                         ${t.comment_count > 0 ? `<span class="task-attach-count">💬${t.comment_count}</span>` : ''}
                         ${t.review_status === 'approved' ? '<span class="review-badge review-approved">&#10003; 通过</span>' : ''}
                         ${t.review_status === 'needs_revision' ? '<span class="review-badge review-needs_revision">&#10007; 需修改</span>' : ''}
-                        ${t.due_date ? `<span>${isOverdue ? '<span class="overdue-badge">已逾期</span>' : '⏰'} ${t.due_date}</span>` : ''}
+                        ${t.accepted_at ? '<span class="accepted-badge">已接受</span>' : (t.assigned_to !== (currentUser||{}).id ? '<span class="pending-badge">待接受</span>' : '')}
+                        ${(() => {
+                            if (!t.due_date || isOverdue) return t.due_date ? '<span><span class="overdue-badge">已逾期</span> '+t.due_date+'</span>' : '';
+                            const daysLeft = Math.ceil((new Date(t.due_date+'T00:00:00') - new Date(todayStr+'T00:00:00')) / 86400000);
+                            if (daysLeft <= 1 && t.status !== 'done') return '<span class="deadline-soon">明天截止</span> '+t.due_date;
+                            if (daysLeft <= 3 && t.status !== 'done') return '<span class="deadline-soon">'+daysLeft+'天后截止</span> '+t.due_date;
+                            return '⏰ '+t.due_date;
+                        })()}
                     </div>
                 </div>
                 <div class="task-progress">
@@ -1359,12 +2322,13 @@
                     </div>
                     <span class="task-progress-text">${t.progress}%</span>
                 </div>
+                ${!t.accepted_at && t.assigned_to === (currentUser||{}).id && currentUser.role !== 'admin' ? `<button class="accept-btn" onclick="event.stopPropagation();acceptTask(${t.id})">接受</button>` : ''}
                 <div class="task-assigned">
                     <div class="avatar" style="background:${t.avatar_color}" title="${t.assigned_name}">${t.assigned_name[0]}</div>
                 </div>
                 <div class="task-actions">
                     <button onclick="event.stopPropagation();showEditTask(${t.id})" title="编辑">✏️</button>
-                    <button onclick="event.stopPropagation();deleteTask(${t.id})" title="删除">🗑</button>
+                    ${currentUser.role === 'admin' ? `<button onclick="event.stopPropagation();deleteTask(${t.id})" title="删除">🗑</button>` : ''}
                 </div>
             </div>
             `;
@@ -1406,6 +2370,12 @@
         document.getElementById('review-group').style.display = 'none';
         document.getElementById('comment-group').style.display = 'none';
         document.getElementById('comment-list').innerHTML = '';
+        document.getElementById('subtask-group').style.display = 'none';
+        document.getElementById('subtask-list').innerHTML = '';
+        document.getElementById('activity-group').style.display = 'none';
+        document.getElementById('task-recurrence').value = '';
+        document.getElementById('tags-group').style.display = 'none';
+        document.getElementById('time-group').style.display = 'none';
 
         // Default assign to selected user or self
         const filterUser = document.getElementById('filter-user').value;
@@ -1440,6 +2410,11 @@
         document.getElementById('attach-group').style.display = '';
         document.getElementById('review-group').style.display = '';
         document.getElementById('comment-group').style.display = '';
+        document.getElementById('subtask-group').style.display = '';
+        document.getElementById('activity-group').style.display = '';
+        document.getElementById('tags-group').style.display = '';
+        document.getElementById('time-group').style.display = '';
+        document.getElementById('task-recurrence').value = t.recurrence || '';
 
         // Review
         const reviewStatus = t.review_status || '';
@@ -1450,6 +2425,10 @@
 
         loadAttachments(t.id);
         loadComments(t.id);
+        loadSubtasks(t.id);
+        loadActivity(t.id);
+        loadTaskTags(t.id);
+        loadTimeEntries(t.id);
         document.getElementById('task-modal').classList.add('show');
     }
 
@@ -1464,6 +2443,7 @@
             due_date: document.getElementById('task-due').value || null,
             category: document.getElementById('task-category').value.trim(),
             progress: parseInt(document.getElementById('task-progress').value),
+            recurrence: document.getElementById('task-recurrence').value,
         };
 
         if (!data.title) { toast('请输入任务标题'); return; }
@@ -1682,8 +2662,8 @@
                     : Math.round(a.file_size/1024)+'KB';
                 return `
                     <div class="attach-item">
-                        ${isImg ? `<img class="attach-thumb" src="/uploads/${a.filename}">` : '<span class="icon">📄</span>'}
-                        <a class="name" href="/uploads/${a.filename}" target="_blank" title="${escHtml(a.original_name)}">${escHtml(a.original_name)}</a>
+                        ${isImg ? `<img class="attach-thumb" src="${BASE}/uploads/${a.filename}">` : '<span class="icon">📄</span>'}
+                        <a class="name" href="${BASE}/uploads/${a.filename}" target="_blank" title="${escHtml(a.original_name)}">${escHtml(a.original_name)}</a>
                         <span class="size">${sizeStr}</span>
                         <button class="del" onclick="deleteAttachment(${a.id}, ${taskId})" title="删除">×</button>
                     </div>`;
@@ -1699,7 +2679,7 @@
             formData.append('file', f);
         }
         try {
-            const res = await fetch(`/api/tasks/${taskId}/attachments`, {
+            const res = await fetch(BASE + `/api/tasks/${taskId}/attachments`, {
                 method: 'POST', body: formData
             });
             const data = await res.json();
@@ -1876,9 +2856,291 @@
         const start = document.getElementById('export-start').value;
         const end = document.getElementById('export-end').value;
         if (!start || !end) { toast('请选择日期范围'); return; }
-        window.location.href = `/api/export?start=${start}&end=${end}`;
+        window.location.href = BASE + `/api/export?start=${start}&end=${end}`;
         closeModal('export-modal');
         toast('正在下载...');
+    }
+
+    // ─── Calendar ────────────────────────────────────────────────
+    let calYear = new Date().getFullYear();
+    let calMonth = new Date().getMonth() + 1;
+
+    function initCalUserFilter() {
+        const sel = document.getElementById('cal-user-filter');
+        sel.innerHTML = '<option value="">全部成员</option>';
+        users.forEach(u => { sel.innerHTML += `<option value="${u.id}">${u.display_name}</option>`; });
+    }
+
+    function changeCalMonth(delta) {
+        calMonth += delta;
+        if (calMonth > 12) { calMonth = 1; calYear++; }
+        if (calMonth < 1) { calMonth = 12; calYear--; }
+        loadCalendar();
+    }
+
+    async function loadCalendar() {
+        document.getElementById('cal-month-label').textContent = `${calYear}年${calMonth}月`;
+        const firstDay = new Date(calYear, calMonth - 1, 1);
+        const lastDay = new Date(calYear, calMonth, 0);
+        const startPad = (firstDay.getDay() + 6) % 7;
+        const calStart = new Date(firstDay); calStart.setDate(1 - startPad);
+        const calEnd = new Date(lastDay); calEnd.setDate(lastDay.getDate() + (6 - (lastDay.getDay() + 6) % 7));
+
+        const userId = document.getElementById('cal-user-filter').value;
+        let url = BASE + `/api/calendar?start=${calStart.toISOString().split('T')[0]}&end=${calEnd.toISOString().split('T')[0]}`;
+        if (userId) url += `&user_id=${userId}`;
+
+        const tasks = await api(url.replace(BASE + BASE, BASE));
+        const taskMap = {};
+        tasks.forEach(t => {
+            if (!taskMap[t.task_date]) taskMap[t.task_date] = [];
+            taskMap[t.task_date].push(t);
+        });
+
+        const todayStr = new Date().toISOString().split('T')[0];
+        let html = '<div class="cal-grid"><div class="cal-header">周一</div><div class="cal-header">周二</div><div class="cal-header">周三</div><div class="cal-header">周四</div><div class="cal-header">周五</div><div class="cal-header">周六</div><div class="cal-header">周日</div>';
+
+        let current = new Date(calStart);
+        while (current <= calEnd) {
+            const ds = current.toISOString().split('T')[0];
+            const isOther = current.getMonth() + 1 !== calMonth;
+            const isToday = ds === todayStr;
+            const dayTasks = taskMap[ds] || [];
+            html += `<div class="cal-day ${isOther?'other-month':''} ${isToday?'today':''}" onclick="setDate('${ds}');switchView('tasks');document.querySelectorAll('.header-nav button')[1].click()">
+                <div class="day-num">${current.getDate()}</div>
+                ${dayTasks.slice(0,3).map(t => `<div class="cal-task ${t.status==='done'?'done':t.priority}">${escHtml(t.title)}</div>`).join('')}
+                ${dayTasks.length > 3 ? `<div style="font-size:10px;color:var(--text-secondary)">+${dayTasks.length-3}更多</div>` : ''}
+            </div>`;
+            current.setDate(current.getDate() + 1);
+        }
+        html += '</div>';
+        document.getElementById('cal-days').innerHTML = html;
+
+        // Load workload
+        loadWorkload();
+    }
+
+    async function loadWorkload() {
+        try {
+            const data = await api('/api/workload');
+            const list = document.getElementById('workload-list');
+            list.innerHTML = data.map(u => {
+                const maxTasks = 10;
+                const pct = Math.min(Math.round(u.pending / maxTasks * 100), 100);
+                return `<div class="workload-card">
+                    <div class="avatar" style="background:${u.avatar_color}">${u.display_name[0]}</div>
+                    <div style="font-weight:600;min-width:60px">${u.display_name}</div>
+                    <div class="workload-bar">
+                        <div class="workload-fill ${u.load_level}" style="width:${Math.max(pct,5)}%">${u.pending}项</div>
+                    </div>
+                    <div class="workload-meta">
+                        <span>总${u.total_tasks}</span>
+                        <span style="color:var(--success)">完成${u.done}</span>
+                        <span style="color:var(--danger)">紧急${u.urgent_count}</span>
+                        <span>${u.hours_logged}h</span>
+                    </div>
+                </div>`;
+            }).join('');
+        } catch(e) {}
+    }
+
+    // ─── Tags ────────────────────────────────────────────────────
+    let allTags = [];
+    let selectedTagIds = [];
+
+    async function loadTaskTags(taskId) {
+        try {
+            allTags = await api('/api/tags');
+            const taskTags = await api('/api/tasks/' + taskId + '/tags');
+            selectedTagIds = taskTags.map(t => t.id);
+            renderTagSelect();
+        } catch(e) {}
+    }
+
+    function renderTagSelect() {
+        const el = document.getElementById('tag-select');
+        el.innerHTML = allTags.map(t => {
+            const sel = selectedTagIds.includes(t.id);
+            return `<span class="tag-option ${sel?'selected':''}" style="background:${t.color}20;color:${t.color}"
+                         onclick="toggleTag(${t.id})">${t.name}</span>`;
+        }).join('');
+    }
+
+    function toggleTag(tagId) {
+        const idx = selectedTagIds.indexOf(tagId);
+        if (idx >= 0) selectedTagIds.splice(idx, 1);
+        else selectedTagIds.push(tagId);
+        renderTagSelect();
+        const taskId = document.getElementById('task-id').value;
+        if (taskId) api('/api/tasks/' + taskId + '/tags', {method:'POST', body:{tag_ids: selectedTagIds}});
+    }
+
+    async function createTag() {
+        const name = document.getElementById('new-tag-name').value.trim();
+        const color = document.getElementById('new-tag-color').value;
+        if (!name) return;
+        await api('/api/tags', {method:'POST', body:{name, color}});
+        document.getElementById('new-tag-name').value = '';
+        const taskId = document.getElementById('task-id').value;
+        if (taskId) loadTaskTags(taskId);
+    }
+
+    // ─── Time Tracking ──────────────────────────────────────────
+    async function loadTimeEntries(taskId) {
+        try {
+            const data = await api('/api/tasks/' + taskId + '/time');
+            const el = document.getElementById('time-entries');
+            const totalH = (data.total_minutes / 60).toFixed(1);
+            let html = `<div style="margin-bottom:8px">总计: <span class="time-total">${totalH}h</span> (${data.total_minutes}分钟)</div>`;
+            html += data.entries.map(e => `
+                <div class="time-entry-row">
+                    <span style="font-weight:600">${e.display_name}</span>
+                    <span>${e.duration}分钟</span>
+                    <span style="color:var(--text-secondary)">${e.entry_date}</span>
+                    <span style="color:var(--text-secondary)">${escHtml(e.note||'')}</span>
+                    <button class="subtask-del" onclick="deleteTimeEntry(${e.id})">×</button>
+                </div>
+            `).join('');
+            el.innerHTML = html;
+        } catch(e) {}
+    }
+
+    async function addTimeEntry() {
+        const taskId = document.getElementById('task-id').value;
+        const duration = parseInt(document.getElementById('time-duration').value);
+        const note = document.getElementById('time-note').value.trim();
+        if (!taskId || !duration || duration < 1) { toast('请输入有效时长'); return; }
+        await api('/api/tasks/' + taskId + '/time', {method:'POST', body:{duration, note}});
+        document.getElementById('time-duration').value = '';
+        document.getElementById('time-note').value = '';
+        loadTimeEntries(taskId);
+        toast('工时已记录');
+    }
+
+    async function deleteTimeEntry(entryId) {
+        await api('/api/time-entries/' + entryId, {method:'DELETE'});
+        const taskId = document.getElementById('task-id').value;
+        loadTimeEntries(taskId);
+    }
+
+    // ─── Subtasks ────────────────────────────────────────────────
+    async function loadSubtasks(taskId) {
+        const list = document.getElementById('subtask-list');
+        try {
+            const subs = await api('/api/tasks/' + taskId + '/subtasks');
+            if (subs.length === 0) {
+                list.innerHTML = '<div style="font-size:12px;color:#ccc;padding:4px 0">暂无子任务</div>';
+                return;
+            }
+            list.innerHTML = subs.map(s => `
+                <div class="subtask-item">
+                    <div class="subtask-check ${s.status === 'done' ? 'done' : ''}"
+                         onclick="toggleSubtask(${s.id}, '${s.status}')">${s.status === 'done' ? '✓' : ''}</div>
+                    <span class="subtask-title ${s.status === 'done' ? 'done' : ''}">${escHtml(s.title)}</span>
+                    ${s.assigned_name ? '<span style="font-size:11px;color:var(--text-secondary)">'+escHtml(s.assigned_name)+'</span>' : ''}
+                    <button class="subtask-del" onclick="deleteSubtask(${s.id})">×</button>
+                </div>
+            `).join('');
+        } catch(e) { list.innerHTML = ''; }
+    }
+
+    async function addSubtask() {
+        const taskId = document.getElementById('task-id').value;
+        const input = document.getElementById('new-subtask');
+        const title = input.value.trim();
+        if (!taskId || !title) return;
+        await api('/api/tasks/' + taskId + '/subtasks', {method:'POST', body:{title}});
+        input.value = '';
+        loadSubtasks(taskId);
+    }
+
+    async function toggleSubtask(subId, current) {
+        const next = current === 'done' ? 'todo' : 'done';
+        await api('/api/subtasks/' + subId, {method:'PUT', body:{status: next}});
+        const taskId = document.getElementById('task-id').value;
+        loadSubtasks(taskId);
+        loadTasks();
+    }
+
+    async function deleteSubtask(subId) {
+        await api('/api/subtasks/' + subId, {method:'DELETE'});
+        const taskId = document.getElementById('task-id').value;
+        loadSubtasks(taskId);
+    }
+
+    // ─── Activity Log ───────────────────────────────────────────
+    async function loadActivity(taskId) {
+        const list = document.getElementById('activity-list');
+        try {
+            const logs = await api('/api/tasks/' + taskId + '/activity');
+            if (logs.length === 0) {
+                list.innerHTML = '<div style="font-size:12px;color:#ccc;padding:4px 0">暂无记录</div>';
+                return;
+            }
+            list.innerHTML = logs.map(l => {
+                const time = l.created_at ? l.created_at.replace('T',' ').substring(5,16) : '';
+                return `<div class="activity-item">
+                    <div class="act-dot"></div>
+                    <div><span class="act-user">${escHtml(l.display_name)}</span> ${escHtml(l.action)}${l.detail ? ' · '+escHtml(l.detail) : ''} <span class="act-time">${time}</span></div>
+                </div>`;
+            }).join('');
+        } catch(e) { list.innerHTML = ''; }
+    }
+
+    // ─── Notifications ──────────────────────────────────────────
+    async function loadNotifications() {
+        try {
+            const data = await api('/api/notifications');
+            const badge = document.getElementById('notif-badge');
+            if (data.unread > 0) {
+                badge.textContent = data.unread;
+                badge.style.display = '';
+            } else {
+                badge.style.display = 'none';
+            }
+            const list = document.getElementById('notif-list');
+            if (data.notifications.length === 0) {
+                list.innerHTML = '<div class="notif-empty">暂无通知</div>';
+                return;
+            }
+            list.innerHTML = data.notifications.map(n => {
+                const time = n.created_at ? n.created_at.replace('T',' ').substring(5,16) : '';
+                return `<div class="notif-item ${n.is_read ? '' : 'unread'}">
+                    <div class="title">${escHtml(n.title)}</div>
+                    <div>${escHtml(n.content)}</div>
+                    <div class="time">${time}</div>
+                </div>`;
+            }).join('');
+        } catch(e) {}
+    }
+
+    function toggleNotifications() {
+        const dd = document.getElementById('notif-dropdown');
+        dd.classList.toggle('show');
+        if (dd.classList.contains('show')) loadNotifications();
+    }
+
+    async function markAllRead() {
+        await api('/api/notifications/read', {method:'POST'});
+        document.getElementById('notif-badge').style.display = 'none';
+        loadNotifications();
+    }
+
+    // Close notification dropdown on outside click
+    document.addEventListener('click', e => {
+        if (!e.target.closest('#notif-bell-btn') && !e.target.closest('#notif-dropdown')) {
+            document.getElementById('notif-dropdown').classList.remove('show');
+        }
+    });
+
+    // Poll notifications every 30s
+    setInterval(loadNotifications, 30000);
+
+    // ─── Accept Task ────────────────────────────────────────────
+    async function acceptTask(taskId) {
+        await api(BASE + '/api/tasks/' + taskId + '/accept', {method:'POST'});
+        toast('已接受任务');
+        loadTasks();
     }
 
     // ─── Utilities ─────────────────────────────────────────────
@@ -1912,7 +3174,732 @@
     // ─── Logout ────────────────────────────────────────────────
     async function doLogout() {
         await api('/api/logout', {method:'POST'});
-        window.location.href = '/login';
+        window.location.href = BASE + '/login';
+    }
+
+    // ─── Methodology ──────────────────────────────────────────
+    function loadMethodology() {
+        renderAgreementForm();
+        loadAgreementList();
+        renderMethodCards();
+    }
+
+    function renderAgreementForm() {
+        const userOpts = users.map(u => `<option value="${u.id}">${u.display_name}</option>`).join('');
+        const today = new Date().toISOString().split('T')[0];
+
+        document.getElementById('agreement-form').innerHTML = `
+            <div class="agreement-body">
+                <!-- 基本信息行 -->
+                <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin-bottom:20px">
+                    <div class="agreement-field"><label>指派给</label><select id="agr-assignee">${userOpts}</select></div>
+                    <div class="agreement-field"><label>截止时间</label><input type="date" id="agr-deadline" value="${today}"></div>
+                    <div class="agreement-field"><label>优先级</label><select id="agr-priority"><option value="urgent">紧急</option><option value="high">高</option><option value="medium" selected>中</option><option value="low">低</option></select></div>
+                </div>
+
+                <!-- 左右对齐流程表 -->
+                <table class="soc-table" style="border:1px solid #c8bfb0;border-radius:var(--radius);overflow:hidden">
+                    <thead>
+                        <tr>
+                            <th style="width:15%;background:#dbeafe;color:#1e40af">流程环节</th>
+                            <th style="width:42.5%;background:#dbeafe;color:#1e40af">📋 发布方（经理）</th>
+                            <th style="width:42.5%;background:#d1fae5;color:#065f46">📋 执行方（员工）</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td style="font-weight:700;background:#f5f0e8;text-align:center">任务目标</td>
+                            <td><input type="text" id="agr-title" placeholder="一句话说清要做什么"></td>
+                            <td><textarea rows="1" id="agr-understanding" placeholder="我理解这个任务是要..."></textarea></td>
+                        </tr>
+                        <tr>
+                            <td style="font-weight:700;background:#f5f0e8;text-align:center">验收标准</td>
+                            <td><textarea rows="2" id="agr-standard" placeholder="做到什么程度算好..."></textarea></td>
+                            <td><textarea rows="2" id="agr-commitment" placeholder="我计划这样完成..."></textarea></td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <!-- 岗前准备 -->
+                <div style="margin-top:16px;border:1px solid #c8bfb0;border-radius:var(--radius);overflow:hidden">
+                    <div class="soc-section-head" onclick="this.nextElementSibling.style.display=this.nextElementSibling.style.display==='none'?'':'none'; this.querySelector('.arrow').style.transform=this.nextElementSibling.style.display==='none'?'':'rotate(90deg)'">
+                        <h5><span class="arrow" style="font-size:10px;color:var(--text-secondary)">▶</span> 岗前准备</h5>
+                    </div>
+                    <div>
+                        <table class="soc-table">
+                            <thead><tr><th style="width:15%">准备项</th><th style="width:42.5%;background:#dbeafe;color:#1e40af">经理要求</th><th style="width:42.5%;background:#d1fae5;color:#065f46">员工确认</th></tr></thead>
+                            <tbody id="soc-prep-body">
+                                <tr><td style="font-weight:600;background:#f5f0e8;text-align:center;font-size:11px">系统/工具</td><td><input placeholder="需要什么系统、工具、设备" data-mgr="prep"></td><td><input placeholder="已准备 / 需要协助" data-emp="prep"></td></tr>
+                                <tr><td style="font-weight:600;background:#f5f0e8;text-align:center;font-size:11px">资料/信息</td><td><input placeholder="需要什么文件、数据" data-mgr="prep"></td><td><input placeholder="已获取 / 缺少什么" data-emp="prep"></td></tr>
+                                <tr><td style="font-weight:600;background:#f5f0e8;text-align:center;font-size:11px">知识/技能</td><td><input placeholder="需要了解什么背景知识" data-mgr="prep"></td><td><input placeholder="已掌握 / 需要培训" data-emp="prep"></td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- 主流程 -->
+                <div style="margin-top:16px;border:1px solid #c8bfb0;border-radius:var(--radius);overflow:hidden">
+                    <div class="soc-section-head" style="cursor:default">
+                        <h5>主流程步骤</h5>
+                        <button class="soc-add-row" onclick="addFlowStep()">+ 添加步骤</button>
+                    </div>
+                    <table class="soc-table">
+                        <thead><tr><th style="width:28px">#</th><th style="width:20%;background:#dbeafe;color:#1e40af">步骤名称</th><th style="width:25%;background:#dbeafe;color:#1e40af">操作标准</th><th style="width:25%;background:#d1fae5;color:#065f46">执行计划</th><th style="width:12%;background:#d1fae5;color:#065f46">时间节点</th><th style="width:28px"></th></tr></thead>
+                        <tbody id="soc-main-body"></tbody>
+                    </table>
+                </div>
+
+                <!-- 异常处理 + 支持需求 -->
+                <div style="margin-top:16px;border:1px solid #c8bfb0;border-radius:var(--radius);overflow:hidden">
+                    <div class="soc-section-head" onclick="this.nextElementSibling.style.display=this.nextElementSibling.style.display==='none'?'':'none'; this.querySelector('.arrow').style.transform=this.nextElementSibling.style.display==='none'?'':'rotate(90deg)'">
+                        <h5><span class="arrow" style="font-size:10px;color:var(--text-secondary)">▶</span> 异常处理 / 需要的支持</h5>
+                    </div>
+                    <div style="display:none">
+                        <table class="soc-table">
+                            <thead><tr><th style="width:15%">类型</th><th style="width:42.5%;background:#dbeafe;color:#1e40af">经理预判</th><th style="width:42.5%;background:#d1fae5;color:#065f46">员工反馈</th></tr></thead>
+                            <tbody id="soc-exception-body">
+                                <tr><td style="font-weight:600;background:#f5f0e8;text-align:center;font-size:11px">可能风险</td><td><textarea rows="1" placeholder="可能出什么问题" data-mgr="exc"></textarea></td><td><textarea rows="1" placeholder="我预见的风险" data-emp="exc"></textarea></td></tr>
+                                <tr><td style="font-weight:600;background:#f5f0e8;text-align:center;font-size:11px">应急方案</td><td><textarea rows="1" placeholder="出问题怎么处理" data-mgr="exc"></textarea></td><td><textarea rows="1" placeholder="我的备选方案" data-emp="exc"></textarea></td></tr>
+                                <tr><td style="font-weight:600;background:#f5f0e8;text-align:center;font-size:11px">需要支持</td><td><textarea rows="1" placeholder="我能提供什么支持" data-mgr="exc"></textarea></td><td><textarea rows="1" id="agr-support" placeholder="我需要什么资源/权限/配合" data-emp="exc"></textarea></td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- SIPOC -->
+                <div class="agreement-sipoc" style="margin-top:16px">
+                    <div class="agreement-sipoc-title">📊 流程索引（SIPOC）</div>
+                    <div class="agreement-sipoc-grid">
+                        <div><label>S 供应商</label><input id="agr-s" placeholder="谁提供输入？"></div>
+                        <div><label>I 输入</label><input id="agr-i" placeholder="需要什么？"></div>
+                        <div><label>P 过程</label><input id="agr-p" placeholder="关键步骤？"></div>
+                        <div><label>O 输出</label><input id="agr-o" placeholder="交付什么？"></div>
+                        <div><label>C 客户</label><input id="agr-c" placeholder="谁接收？"></div>
+                    </div>
+                </div>
+
+                <!-- 鉴定栏 + 签字 -->
+                <div style="margin-top:16px;border:1px solid #c8bfb0;border-radius:var(--radius);overflow:hidden">
+                    <div class="soc-section-head" onclick="this.nextElementSibling.style.display=this.nextElementSibling.style.display==='none'?'':'none'; this.querySelector('.arrow').style.transform=this.nextElementSibling.style.display==='none'?'':'rotate(90deg)'">
+                        <h5><span class="arrow" style="font-size:10px;color:var(--text-secondary)">▶</span> 鉴定栏</h5>
+                    </div>
+                    <div style="display:none">
+                        <div class="soc-sign-grid">
+                            <div class="soc-sign-item"><label>完成人：</label><input data-sign="author" placeholder="姓名"><input type="date" data-sign="author-date"></div>
+                            <div class="soc-sign-item"><label>训练员：</label><input data-sign="trainer" placeholder="姓名"><input type="date" data-sign="trainer-date"></div>
+                            <div class="soc-sign-item"><label>鉴定者：</label><input data-sign="auditor" placeholder="姓名"><input type="date" data-sign="auditor-date"></div>
+                            <div class="soc-sign-item"><label>追踪人：</label><input data-sign="tracker" placeholder="姓名"><input type="date" data-sign="tracker-date"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <label class="agreement-confirm" style="margin-top:20px">
+                    <input type="checkbox" id="agr-confirmed">
+                    双方已确认目标一致，理解验收标准
+                </label>
+                <div class="agreement-footer">
+                    <div class="agreement-signatures">
+                        <div class="agreement-sig">经理签字：<span class="name" id="agr-sig-manager"></span></div>
+                        <div class="agreement-sig">员工签字：<span class="name" id="agr-sig-employee"></span></div>
+                    </div>
+                    <button class="btn-primary" onclick="submitAgreement()" id="agr-submit-btn" disabled style="padding:10px 24px;font-size:14px">提交创建任务</button>
+                </div>
+            </div>
+        `;
+
+        // 签名
+        document.getElementById('agr-sig-manager').textContent = currentUser.display_name;
+        const sel = document.getElementById('agr-assignee');
+        const upSig = () => { document.getElementById('agr-sig-employee').textContent = sel.options[sel.selectedIndex].textContent; };
+        sel.addEventListener('change', upSig); upSig();
+        document.getElementById('agr-confirmed').addEventListener('change', function() {
+            document.getElementById('agr-submit-btn').disabled = !this.checked;
+        });
+        // 默认 3 行主流程
+        socMainCount = 0;
+        addFlowStep(); addFlowStep(); addFlowStep();
+    }
+
+    function addFlowStep() {
+        socMainCount++;
+        const tr = document.createElement('tr');
+        tr.innerHTML = `<td class="num-cell">${socMainCount}</td><td><input placeholder="如：需求确认" data-mgr="step-name"></td><td><textarea rows="1" placeholder="操作细节和标准" data-mgr="step-detail"></textarea></td><td><textarea rows="1" placeholder="我计划怎么做" data-emp="step-plan"></textarea></td><td><input type="date" data-emp="step-date"></td><td><button class="soc-del" onclick="removeSOCRow(this,'soc-main-body')">×</button></td>`;
+        document.getElementById('soc-main-body').appendChild(tr);
+    }
+
+    async function submitAgreement() {
+        const title = document.getElementById('agr-title').value.trim();
+        if (!title) { showToast('请填写任务目标', 'warning'); return; }
+
+        const standard = document.getElementById('agr-standard').value.trim();
+        const understanding = document.getElementById('agr-understanding').value.trim();
+        const commitment = document.getElementById('agr-commitment').value.trim();
+        const support = document.getElementById('agr-support').value.trim();
+        const s = document.getElementById('agr-s').value.trim();
+        const i = document.getElementById('agr-i').value.trim();
+        const p = document.getElementById('agr-p').value.trim();
+        const o = document.getElementById('agr-o').value.trim();
+        const c = document.getElementById('agr-c').value.trim();
+
+        // 组装结构化描述
+        let desc = '【一分钟目标协议书】\n\n';
+        desc += '━━ 目标匹配 ━━\n';
+        if (standard) desc += '经理-验收标准：' + standard + '\n';
+        if (understanding) desc += '员工-我的理解：' + understanding + '\n';
+        if (commitment) desc += '员工-完成承诺：' + commitment + '\n';
+        if (support) desc += '员工-需要支持：' + support + '\n';
+
+        // 主流程步骤
+        const mainRows = document.querySelectorAll('#soc-main-body tr');
+        if (mainRows.length) {
+            desc += '\n━━ 主流程 ━━\n';
+            mainRows.forEach((r, idx) => {
+                const name = (r.querySelector('[data-mgr="step-name"]') || {}).value || '';
+                const detail = (r.querySelector('[data-mgr="step-detail"]') || {}).value || '';
+                const plan = (r.querySelector('[data-emp="step-plan"]') || {}).value || '';
+                const dt = (r.querySelector('[data-emp="step-date"]') || {}).value || '';
+                if (!name.trim()) return;
+                desc += (idx+1) + '. ' + name.trim();
+                if (dt) desc += ' [' + dt + ']';
+                desc += '\n';
+                if (detail.trim()) desc += '   标准：' + detail.trim() + '\n';
+                if (plan.trim()) desc += '   计划：' + plan.trim() + '\n';
+            });
+        }
+
+        // 岗前准备
+        const prepRows = document.querySelectorAll('#soc-prep-body tr');
+        const prepItems = [];
+        prepRows.forEach(r => {
+            const mgr = r.querySelector('[data-mgr="prep"]');
+            const emp = r.querySelector('[data-emp="prep"]');
+            const label = r.querySelector('td').textContent.trim();
+            if ((mgr && mgr.value.trim()) || (emp && emp.value.trim())) {
+                prepItems.push(label + '：' + (mgr ? mgr.value.trim() : '') + (emp && emp.value.trim() ? ' → 员工：' + emp.value.trim() : ''));
+            }
+        });
+        if (prepItems.length) {
+            desc += '\n━━ 岗前准备 ━━\n' + prepItems.join('\n') + '\n';
+        }
+
+        if (s || i || p || o || c) {
+            desc += '\n━━ 流程索引(SIPOC) ━━\n';
+            if (s) desc += 'S(供应商)：' + s + '\n';
+            if (i) desc += 'I(输入)：' + i + '\n';
+            if (p) desc += 'P(过程)：' + p + '\n';
+            if (o) desc += 'O(输出)：' + o + '\n';
+            if (c) desc += 'C(客户)：' + c + '\n';
+        }
+
+        const assignee = document.getElementById('agr-assignee').value;
+        const deadline = document.getElementById('agr-deadline').value;
+        const priority = document.getElementById('agr-priority').value;
+
+        const res = await api('/api/tasks', {
+            method: 'POST',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({
+                title: title,
+                description: desc.trim(),
+                assigned_to: parseInt(assignee),
+                priority: priority,
+                due_date: deadline,
+                task_date: new Date().toISOString().split('T')[0],
+                category: '一分钟目标'
+            })
+        });
+
+        if (res.ok) {
+            showToast('协议已签署，任务已创建！');
+            // 清空表单
+            ['agr-title','agr-standard','agr-understanding','agr-commitment','agr-support','agr-s','agr-i','agr-p','agr-o','agr-c'].forEach(id => {
+                const el = document.getElementById(id);
+                if (el) el.value = '';
+            });
+            document.getElementById('agr-confirmed').checked = false;
+            document.getElementById('agr-submit-btn').disabled = true;
+            // 重新渲染整个表单
+            renderAgreementForm();
+            loadAgreementList();
+        } else {
+            showToast(res.error || '创建失败', 'error');
+        }
+    }
+
+    let socInited = false;
+
+    function toggleSOC(btn) {
+        btn.classList.toggle('open');
+        const wrap = document.getElementById('soc-wrap');
+        wrap.classList.toggle('open');
+        if (!socInited && wrap.classList.contains('open')) {
+            renderSOC();
+            socInited = true;
+        }
+        btn.innerHTML = wrap.classList.contains('open')
+            ? '<span class="arrow" style="transform:rotate(90deg)">▶</span> 📋 收起流程检查表 SOC（流程密码）'
+            : '<span class="arrow">▶</span> 📋 展开流程检查表 SOC（流程密码）';
+    }
+
+    function renderSOC() {
+        document.getElementById('soc-wrap').innerHTML = `
+            <div class="soc-banner">
+                <h4>📋 岗位观察检查表（SOC）</h4>
+                <span style="font-size:11px;color:var(--text-secondary)">来自《流程密码》标准格式</span>
+            </div>
+
+            <div class="soc-section open" id="soc-sec-prep">
+                <div class="soc-section-head" onclick="this.parentElement.classList.toggle('open')">
+                    <h5><span class="arrow">▶</span> 岗前准备</h5>
+                </div>
+                <div class="soc-section-body">
+                    <table class="soc-table">
+                        <thead><tr><th style="width:25%">步骤</th><th>操作细节和标准</th></tr></thead>
+                        <tbody id="soc-prep-body">
+                            <tr><td><input value="系统准备" data-cat="prep" data-field="name"></td><td><textarea rows="1" placeholder="如：系统运行正常、账号权限到位" data-cat="prep" data-field="detail"></textarea></td></tr>
+                            <tr><td><input value="工具准备" data-cat="prep" data-field="name"></td><td><textarea rows="1" placeholder="如：需要的工具、设备、U盾等" data-cat="prep" data-field="detail"></textarea></td></tr>
+                            <tr><td><input value="资料准备" data-cat="prep" data-field="name"></td><td><textarea rows="1" placeholder="如：需要的文件、数据、清单" data-cat="prep" data-field="detail"></textarea></td></tr>
+                            <tr><td><input value="自我准备" data-cat="prep" data-field="name"></td><td><textarea rows="1" placeholder="如：需要提前了解的知识、注意事项" data-cat="prep" data-field="detail"></textarea></td></tr>
+                        </tbody>
+                    </table>
+                    <button class="soc-add-row" onclick="addSOCRow('soc-prep-body','prep')">+ 添加准备项</button>
+                </div>
+            </div>
+
+            <div class="soc-section open" id="soc-sec-main">
+                <div class="soc-section-head" onclick="this.parentElement.classList.toggle('open')">
+                    <h5><span class="arrow">▶</span> 主流程</h5>
+                </div>
+                <div class="soc-section-body">
+                    <table class="soc-table">
+                        <thead><tr><th style="width:28px">#</th><th style="width:22%">主流程</th><th>操作细节和标准</th><th style="width:28px"></th></tr></thead>
+                        <tbody id="soc-main-body">
+                        </tbody>
+                    </table>
+                    <button class="soc-add-row" onclick="addSOCMainStep()">+ 添加流程步骤</button>
+                </div>
+            </div>
+
+            <div class="soc-section" id="soc-sec-exception">
+                <div class="soc-section-head" onclick="this.parentElement.classList.toggle('open')">
+                    <h5><span class="arrow">▶</span> 异常处理 / 附带职责</h5>
+                </div>
+                <div class="soc-section-body">
+                    <table class="soc-table">
+                        <thead><tr><th style="width:25%">异常情况</th><th>处理方法</th><th style="width:28px"></th></tr></thead>
+                        <tbody id="soc-exception-body">
+                        </tbody>
+                    </table>
+                    <button class="soc-add-row" onclick="addSOCRow('soc-exception-body','exception')">+ 添加异常项</button>
+                </div>
+            </div>
+
+            <div class="soc-section" id="soc-sec-sign">
+                <div class="soc-section-head" onclick="this.parentElement.classList.toggle('open')">
+                    <h5><span class="arrow">▶</span> 鉴定栏</h5>
+                </div>
+                <div class="soc-section-body">
+                    <div class="soc-sign-grid">
+                        <div class="soc-sign-item"><label>完成人：</label><input data-sign="author" placeholder="姓名"><input type="date" data-sign="author-date"></div>
+                        <div class="soc-sign-item"><label>训练员：</label><input data-sign="trainer" placeholder="姓名"><input type="date" data-sign="trainer-date"></div>
+                        <div class="soc-sign-item"><label>鉴定者：</label><input data-sign="auditor" placeholder="姓名"><input type="date" data-sign="auditor-date"></div>
+                        <div class="soc-sign-item"><label>追踪人：</label><input data-sign="tracker" placeholder="姓名"><input type="date" data-sign="tracker-date"></div>
+                    </div>
+                </div>
+            </div>
+        `;
+        // 默认加 3 行主流程
+        addSOCMainStep(); addSOCMainStep(); addSOCMainStep();
+        // 默认加 1 行异常
+        addSOCRow('soc-exception-body', 'exception');
+    }
+
+    let socMainCount = 0;
+    function addSOCMainStep() {
+        socMainCount++;
+        const tbody = document.getElementById('soc-main-body');
+        const tr = document.createElement('tr');
+        tr.innerHTML = `<td class="num-cell">${socMainCount}</td><td><input placeholder="步骤名称" data-cat="main" data-field="name"></td><td><textarea rows="2" placeholder="详细操作细节和标准..." data-cat="main" data-field="detail"></textarea></td><td><button class="soc-del" onclick="removeSOCRow(this,'soc-main-body')">×</button></td>`;
+        tbody.appendChild(tr);
+    }
+
+    function addSOCRow(tbodyId, cat) {
+        const tbody = document.getElementById(tbodyId);
+        const tr = document.createElement('tr');
+        if (cat === 'prep') {
+            tr.innerHTML = `<td><input placeholder="准备项" data-cat="prep" data-field="name"></td><td><textarea rows="1" placeholder="操作细节和标准" data-cat="prep" data-field="detail"></textarea></td>`;
+        } else {
+            tr.innerHTML = `<td><input placeholder="异常情况" data-cat="exception" data-field="name"></td><td><textarea rows="1" placeholder="处理方法" data-cat="exception" data-field="detail"></textarea></td><td><button class="soc-del" onclick="removeSOCRow(this,'${tbodyId}')">×</button></td>`;
+        }
+        tbody.appendChild(tr);
+    }
+
+    function removeSOCRow(btn, tbodyId) {
+        btn.closest('tr').remove();
+        if (tbodyId === 'soc-main-body') {
+            const rows = document.querySelectorAll('#soc-main-body tr');
+            rows.forEach((r, i) => { const c = r.querySelector('.num-cell'); if (c) c.textContent = i + 1; });
+            socMainCount = rows.length;
+        }
+    }
+
+    function collectProcessSteps() {
+        if (!socInited) return [];
+        const sections = [];
+        // 岗前准备
+        const preps = [];
+        document.querySelectorAll('#soc-prep-body tr').forEach(r => {
+            const n = r.querySelector('[data-field="name"]'); const d = r.querySelector('[data-field="detail"]');
+            if (n && n.value.trim()) preps.push({name: n.value.trim(), detail: (d && d.value.trim()) || ''});
+        });
+        if (preps.length) sections.push({title: '岗前准备', items: preps});
+        // 主流程
+        const mains = [];
+        document.querySelectorAll('#soc-main-body tr').forEach((r, i) => {
+            const n = r.querySelector('[data-field="name"]'); const d = r.querySelector('[data-field="detail"]');
+            if (n && n.value.trim()) mains.push({step: i+1, name: n.value.trim(), detail: (d && d.value.trim()) || ''});
+        });
+        if (mains.length) sections.push({title: '主流程', items: mains});
+        // 异常处理
+        const excs = [];
+        document.querySelectorAll('#soc-exception-body tr').forEach(r => {
+            const n = r.querySelector('[data-field="name"]'); const d = r.querySelector('[data-field="detail"]');
+            if (n && n.value.trim()) excs.push({name: n.value.trim(), detail: (d && d.value.trim()) || ''});
+        });
+        if (excs.length) sections.push({title: '异常处理', items: excs});
+        return sections;
+    }
+
+    function priorityLabel(p) {
+        const m = {urgent:'紧急',high:'高',medium:'中',low:'低'};
+        return m[p] || p;
+    }
+
+    async function loadAgreementList() {
+        const today = new Date().toISOString().split('T')[0];
+        document.getElementById('agreement-date').textContent = today;
+        const tasks = await api('/api/tasks?date=' + today);
+        // 筛选出通过协议书创建的任务
+        const agreements = (tasks || []).filter(t => t.category === '一分钟目标' || (t.description && t.description.includes('一分钟目标协议书')));
+
+        if (!agreements.length) {
+            document.getElementById('agreement-list').innerHTML = '<div style="text-align:center;color:var(--text-secondary);padding:20px;font-size:13px">今日暂无协议，在上方签署第一份吧</div>';
+            return;
+        }
+
+        document.getElementById('agreement-list').innerHTML = agreements.map(t => {
+            const assignee = users.find(u => u.id === t.assigned_to);
+            const creator = users.find(u => u.id === t.created_by);
+            const isAccepted = t.accepted_at;
+            const statusClass = isAccepted ? 'accepted' : 'pending';
+            const statusText = isAccepted ? '已确认接受' : '待员工确认';
+
+            // 解析描述中的字段
+            const desc = t.description || '';
+            const getField = (label) => {
+                const m = desc.match(new RegExp(label + '：(.+)'));
+                return m ? m[1].trim() : '';
+            };
+
+            return `<div class="agreement-card">
+                <div class="ac-col">
+                    <strong>📋 发布方</strong>：${creator ? creator.display_name : ''}
+                    <div style="margin-top:6px">
+                        <div>🎯 <strong>${t.title}</strong></div>
+                        ${getField('验收标准') ? '<div style="color:var(--text-secondary)">验收：' + getField('验收标准') + '</div>' : ''}
+                    </div>
+                </div>
+                <div class="ac-col">
+                    <strong>📋 执行方</strong>：${assignee ? assignee.display_name : ''}
+                    <div style="margin-top:6px">
+                        ${getField('我的理解') ? '<div>理解：' + getField('我的理解') + '</div>' : ''}
+                        ${getField('完成承诺') ? '<div>承诺：' + getField('完成承诺') + '</div>' : ''}
+                    </div>
+                </div>
+                <div class="ac-meta">
+                    <span>截止：${t.due_date || '未设置'} · 优先级：${priorityLabel(t.priority)}</span>
+                    <span class="ac-status ${statusClass}">${statusText}</span>
+                </div>
+            </div>`;
+        }).join('');
+    }
+
+    function renderMethodCards() {
+        // 保留原有的知识卡片渲染
+        _renderMethodCardsOld();
+    }
+
+    function _renderMethodCardsOld() {
+        // Book 1: 一分钟经理人 卡片
+        const book1Cards = [
+            {
+                icon: '🎯', title: '一分钟目标',
+                body: `<p><strong>核心原则</strong>：目标写在一页纸上（不超过250字），一分钟能读完。</p>
+                <p><strong>怎么做</strong>：</p>
+                <ul>
+                    <li>和下属一起确定目标（不是单方面指派）</li>
+                    <li>用清晰具体的语言描述<span class="highlight">「做到什么程度算好」</span></li>
+                    <li>每个目标独立一页，双方各留一份</li>
+                    <li>经常回顾：实际行为是否与目标一致？</li>
+                </ul>
+                <div class="example-box">
+                    <strong>示例 — 写一个一分钟目标：</strong><br>
+                    「在本周五之前，完成客户反馈系统的需求文档。<br>
+                    好的标准：文档包含用户故事(≥5个)、验收标准、优先级排序。<br>
+                    产出物需经过产品经理确认签字。」
+                </div>
+                <p><strong>在 TaskFlow 中的应用</strong>：创建任务时，在「描述」字段按此模板写清目标和验收标准。</p>`
+            },
+            {
+                icon: '👏', title: '一分钟表扬',
+                body: `<p><strong>核心原则</strong>：抓住别人做对的事，<span class="highlight">立刻、具体地</span>表扬。</p>
+                <p><strong>四步法</strong>：</p>
+                <ul>
+                    <li><strong>第一步</strong>：说清楚他做对了什么（具体行为，不是笼统的「干得好」）</li>
+                    <li><strong>第二步</strong>：告诉他你的感受（「我觉得很高兴」「这让团队效率提升了」）</li>
+                    <li><strong>第三步</strong>：停顿几秒，让对方感受到你的真诚</li>
+                    <li><strong>第四步</strong>：鼓励他继续保持</li>
+                </ul>
+                <div class="example-box">
+                    <strong>示例</strong>：<br>
+                    「小王，你这次的客户方案里主动加了竞品对比表——这不是我要求的，但它直接帮客户做了决策。我很欣赏这种主动思考。继续保持这种 ownership。」
+                </div>
+                <p><strong>关键</strong>：对新人，要频繁表扬「大致做对」的行为，不要等到完美才表扬。</p>`
+            },
+            {
+                icon: '🔧', title: '一分钟纠正',
+                body: `<p><strong>核心原则</strong>：对事不对人，<span class="highlight">纠正行为，肯定人</span>。</p>
+                <p><strong>前半分钟 — 纠正行为</strong>：</p>
+                <ul>
+                    <li>事情发生后立刻沟通，不要攒着</li>
+                    <li>具体说清楚哪里做错了</li>
+                    <li>告诉对方这件事的影响（「因为这个延迟，客户那边...」）</li>
+                    <li>停顿，让对方消化</li>
+                </ul>
+                <p><strong>后半分钟 — 肯定人</strong>：</p>
+                <ul>
+                    <li>明确告诉对方：你还是看好他这个人</li>
+                    <li>你只是对这件事不满意，不是对他整个人</li>
+                    <li>表达信任：「我相信你能做得更好」</li>
+                </ul>
+                <div class="example-box">
+                    <strong>示例</strong>：<br>
+                    「这次报告有3处数据和源头不一致，发给客户前没有交叉验证，这让我们在客户面前显得不专业。——但我知道你的分析能力很强，上次的季度报告做得就很出色。下次发之前，我们加一个数据校验步骤，好吗？」
+                </div>`
+            }
+        ];
+
+        // Book 2: 流程密码 卡片
+        const book2Cards = [
+            {
+                icon: '🔄', title: '精英模式 vs 系统模式（造钟 vs 报时）',
+                body: `<p><strong>核心概念</strong>：</p>
+                <ul>
+                    <li><strong>报时</strong> = 老板是活字典，所有问题都来找你 → 离了你团队就瘫了</li>
+                    <li><strong>造钟</strong> = 建立系统和流程 → 系统自己能运转</li>
+                </ul>
+                <p><strong>自检问题</strong>：</p>
+                <ul>
+                    <li>你不在的时候，团队能正常运转吗？</li>
+                    <li>同一类问题，是不是总要你亲自决定？</li>
+                    <li>新人来了，有没有现成流程可以学？</li>
+                </ul>
+                <div class="example-box">
+                    <strong>转变方法</strong>：把你反复回答的问题、反复做的决定，变成 SOP 文档/模板/检查清单。<br>
+                    在 TaskFlow 中：善用「任务模板」功能，把重复任务标准化。
+                </div>`
+            },
+            {
+                icon: '📊', title: 'SIPOC 模型',
+                body: `<p><strong>用来干什么</strong>：在设计或优化任何流程之前，先用 SIPOC 画清全貌。</p>
+                <p><strong>五个要素</strong>：</p>
+                <ul>
+                    <li><strong>S</strong>upplier（供应商）— 谁提供输入？上游是谁？</li>
+                    <li><strong>I</strong>nput（输入）— 需要什么材料/信息/资源？</li>
+                    <li><strong>P</strong>rocess（过程）— 具体做什么？关键步骤有哪些？</li>
+                    <li><strong>O</strong>utput（输出）— 交付什么？产出物是什么？</li>
+                    <li><strong>C</strong>ustomer（客户）— 谁接收产出？下游是谁？</li>
+                </ul>
+                <div class="example-box">
+                    <strong>示例 — 「写周报」的 SIPOC</strong>：<br>
+                    <strong>S</strong>：各项目负责人（提供进展数据）<br>
+                    <strong>I</strong>：本周任务完成情况、下周计划、阻碍事项<br>
+                    <strong>P</strong>：收集数据 → 归类整理 → 写报告 → 审核 → 发送<br>
+                    <strong>O</strong>：周报文档（含数据+分析+下周计划）<br>
+                    <strong>C</strong>：直属上级、相关部门负责人
+                </div>`
+            },
+            {
+                icon: '🏗️', title: '三层流程体系',
+                body: `<p><strong>一个组织的流程分三层</strong>：</p>
+                <ul>
+                    <li><strong>战略流程</strong>（Strategic）— 方向性决策：做什么、不做什么、资源怎么分配</li>
+                    <li><strong>督导流程</strong>（Supervisory）— 管理性流程：目标分解、进度跟踪、绩效评估</li>
+                    <li><strong>操作流程</strong>（Operational）— 执行性流程：具体怎么做一件事，SOP</li>
+                </ul>
+                <div class="example-box">
+                    <strong>映射到 TaskFlow</strong>：<br>
+                    战略流程 → 「总览」面板的方向性目标<br>
+                    督导流程 → 「日报」+ 任务分配 + 审核功能<br>
+                    操作流程 → 每个具体任务的步骤（子任务功能）
+                </div>`
+            },
+            {
+                icon: '✅', title: '优质流程三特征',
+                body: `<p>判断一个流程好不好，看三点：</p>
+                <ul>
+                    <li><strong>简单化</strong> — 步骤尽量少，去掉不增值的环节。「如果去掉这一步，结果会变差吗？不会？那就去掉。」</li>
+                    <li><strong>专业化/标准化</strong> — 谁来做都能做出差不多的效果，不依赖某个人的经验。</li>
+                    <li><strong>满足客户需求</strong> — 流程的产出是客户想要的（内部客户也算），不是自嗨。</li>
+                </ul>
+                <div class="example-box">
+                    <strong>自检清单</strong>：<br>
+                    □ 这个流程新人3天内能学会吗？（简单化）<br>
+                    □ 换一个人来做，结果会差很多吗？（标准化）<br>
+                    □ 下游/客户对产出物满意吗？（客户需求）
+                </div>`
+            },
+            {
+                icon: '🧠', title: '五种设计思维',
+                body: `<p>设计流程时要切换五种视角：</p>
+                <ul>
+                    <li><strong>系统思维</strong> — 不要只看局部，要看整个链条。一个环节的改变会影响上下游。</li>
+                    <li><strong>逻辑思维</strong> — 步骤之间要有因果关系，先后顺序要合理。</li>
+                    <li><strong>客户思维</strong> — 从最终接收者的角度倒推：他要什么？什么形式？什么时候要？</li>
+                    <li><strong>用户思维</strong> — 执行者好不好操作？工具够不够用？会不会太复杂？</li>
+                    <li><strong>问题思维</strong> — 哪里容易出错？出错了怎么办？有没有防错机制？</li>
+                </ul>`
+            }
+        ];
+
+        // 渲染知识卡片
+        document.getElementById('method-book1-cards').innerHTML = book1Cards.map((c, i) =>
+            `<div class="method-card${i === 0 ? ' open' : ''}" onclick="toggleMethodCard(this)">
+                <div class="method-card-header">
+                    <span class="icon">${c.icon}</span>
+                    <span class="title">${c.title}</span>
+                    <span class="arrow">▶</span>
+                </div>
+                <div class="method-card-body">${c.body}</div>
+            </div>`
+        ).join('');
+
+        document.getElementById('method-book2-cards').innerHTML = book2Cards.map((c, i) =>
+            `<div class="method-card${i === 0 ? ' open' : ''}" onclick="toggleMethodCard(this)">
+                <div class="method-card-header">
+                    <span class="icon">${c.icon}</span>
+                    <span class="title">${c.title}</span>
+                    <span class="arrow">▶</span>
+                </div>
+                <div class="method-card-body">${c.body}</div>
+            </div>`
+        ).join('');
+
+        // 练习区
+        document.getElementById('method-practice').innerHTML = `
+            <div class="method-section">
+                <div class="method-section-title">🎯 练习：写一个一分钟目标</div>
+                <p style="font-size:13px;color:var(--text-secondary);margin-bottom:12px">
+                    试着用一分钟目标的格式，为你的下一个任务写清目标。写完后用下方清单自查。
+                </p>
+                <textarea id="method-practice-goal" placeholder="在这里写你的一分钟目标...&#10;&#10;格式参考：&#10;1. 做什么（具体任务）&#10;2. 做到什么程度算好（验收标准）&#10;3. 截止时间&#10;4. 需要的资源/支持" oninput="updateMethodWordCount()"></textarea>
+                <div class="method-word-count" id="method-word-count">0 字（建议不超过 250 字）</div>
+
+                <div style="margin-top:16px">
+                    <strong style="font-size:13px">自查清单：</strong>
+                    <ul class="method-checklist" id="method-goal-checklist">
+                        <li onclick="this.classList.toggle('checked')">
+                            <span class="check"></span>
+                            <span>目标是否具体？（不是「做好」「优化」这种模糊词）</span>
+                        </li>
+                        <li onclick="this.classList.toggle('checked')">
+                            <span class="check"></span>
+                            <span>是否定义了「好的标准」？（什么样算完成）</span>
+                        </li>
+                        <li onclick="this.classList.toggle('checked')">
+                            <span class="check"></span>
+                            <span>是否有明确的截止时间？</span>
+                        </li>
+                        <li onclick="this.classList.toggle('checked')">
+                            <span class="check"></span>
+                            <span>一分钟内能读完吗？（不超过250字）</span>
+                        </li>
+                        <li onclick="this.classList.toggle('checked')">
+                            <span class="check"></span>
+                            <span>对方看完能知道该怎么行动吗？</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="method-section" style="border-top:1px solid #d4ccc0">
+                <div class="method-section-title">📊 练习：SIPOC 快速分析</div>
+                <p style="font-size:13px;color:var(--text-secondary);margin-bottom:12px">
+                    选一个你正在做的任务，用 SIPOC 五要素拆解一下，理清上下游关系。
+                </p>
+                <div class="method-sipoc-grid" style="display:grid;grid-template-columns:repeat(5,1fr);gap:8px">
+                    <div>
+                        <label style="font-size:12px;font-weight:600;display:block;margin-bottom:4px;color:#1E40AF">S 供应商</label>
+                        <textarea placeholder="谁提供输入？" style="width:100%;min-height:60px;padding:8px;border:1px solid #b0a898;border-radius:5px;font-size:12px;font-family:inherit;resize:vertical;background:linear-gradient(180deg,#f0ebe2 0%,#faf6ef 4px,#faf6ef 100%)"></textarea>
+                    </div>
+                    <div>
+                        <label style="font-size:12px;font-weight:600;display:block;margin-bottom:4px;color:#1E40AF">I 输入</label>
+                        <textarea placeholder="需要什么？" style="width:100%;min-height:60px;padding:8px;border:1px solid #b0a898;border-radius:5px;font-size:12px;font-family:inherit;resize:vertical;background:linear-gradient(180deg,#f0ebe2 0%,#faf6ef 4px,#faf6ef 100%)"></textarea>
+                    </div>
+                    <div>
+                        <label style="font-size:12px;font-weight:600;display:block;margin-bottom:4px;color:#1E40AF">P 过程</label>
+                        <textarea placeholder="关键步骤？" style="width:100%;min-height:60px;padding:8px;border:1px solid #b0a898;border-radius:5px;font-size:12px;font-family:inherit;resize:vertical;background:linear-gradient(180deg,#f0ebe2 0%,#faf6ef 4px,#faf6ef 100%)"></textarea>
+                    </div>
+                    <div>
+                        <label style="font-size:12px;font-weight:600;display:block;margin-bottom:4px;color:#1E40AF">O 输出</label>
+                        <textarea placeholder="交付什么？" style="width:100%;min-height:60px;padding:8px;border:1px solid #b0a898;border-radius:5px;font-size:12px;font-family:inherit;resize:vertical;background:linear-gradient(180deg,#f0ebe2 0%,#faf6ef 4px,#faf6ef 100%)"></textarea>
+                    </div>
+                    <div>
+                        <label style="font-size:12px;font-weight:600;display:block;margin-bottom:4px;color:#1E40AF">C 客户</label>
+                        <textarea placeholder="谁接收？" style="width:100%;min-height:60px;padding:8px;border:1px solid #b0a898;border-radius:5px;font-size:12px;font-family:inherit;resize:vertical;background:linear-gradient(180deg,#f0ebe2 0%,#faf6ef 4px,#faf6ef 100%)"></textarea>
+                    </div>
+                </div>
+            </div>
+
+            <div class="method-section" style="border-top:1px solid #d4ccc0">
+                <div class="method-section-title">🔧 自检：你是在报时还是造钟？</div>
+                <ul class="method-checklist">
+                    <li onclick="this.classList.toggle('checked')">
+                        <span class="check"></span>
+                        <span>团队中反复出现的问题，我已经写成了 SOP 或模板</span>
+                    </li>
+                    <li onclick="this.classList.toggle('checked')">
+                        <span class="check"></span>
+                        <span>新人入职后，能通过文档自主完成80%的常规任务</span>
+                    </li>
+                    <li onclick="this.classList.toggle('checked')">
+                        <span class="check"></span>
+                        <span>我不在的时候，团队仍然能正常推进工作</span>
+                    </li>
+                    <li onclick="this.classList.toggle('checked')">
+                        <span class="check"></span>
+                        <span>我的时间主要花在「设计系统」而非「救火」上</span>
+                    </li>
+                    <li onclick="this.classList.toggle('checked')">
+                        <span class="check"></span>
+                        <span>每个重要流程都有文档化的检查清单</span>
+                    </li>
+                </ul>
+            </div>
+        `;
+    }
+
+    function toggleMethodCard(el) {
+        if (event.target.closest('.method-card-body')) return;
+        el.classList.toggle('open');
+    }
+
+    function updateMethodWordCount() {
+        const text = document.getElementById('method-practice-goal').value;
+        const count = text.replace(/\s/g, '').length;
+        const el = document.getElementById('method-word-count');
+        el.textContent = count + ' 字（建议不超过 250 字）';
+        el.className = 'method-word-count' + (count > 250 ? ' over' : '');
     }
 
     // ─── Start ─────────────────────────────────────────────────
